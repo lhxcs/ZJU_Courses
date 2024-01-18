@@ -1,0 +1,24 @@
+Foremost version 1.5.7 by Jesse Kornblum, Kris Kendall, and Nick Mikus
+Audit File
+
+Foremost started at Wed Jul 12 22:11:46 2023
+Invocation: foremost -i 1.jpg 
+Output directory: /mnt/c/Users/petrichor0/Desktop/misclab/output
+Configuration file: /etc/foremost.conf
+------------------------------------------------------------------
+File: 1.jpg
+Start: Wed Jul 12 22:11:46 2023
+Length: 64 KB (65660 bytes)
+ 
+Num	 Name (bs=512)	       Size	 File Offset	 Comment 
+
+0:	00000000.jpg 	      26 KB 	          0 	 
+1:	00000052.jpg 	      38 KB 	      26657 	 
+Finish: Wed Jul 12 22:11:46 2023
+
+2 FILES EXTRACTED
+	
+jpg:= 2
+------------------------------------------------------------------
+
+Foremost finished at Wed Jul 12 22:11:47 2023
