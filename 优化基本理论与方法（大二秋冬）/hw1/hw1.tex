@@ -1,0 +1,86 @@
+\documentclass{article}
+\usepackage{hwopt}
+
+%%%%%%%%%%%%%%%%%
+%     Title     %
+%%%%%%%%%%%%%%%%%
+\title{Coursework (1) for \emph{Introductory Lectures on Optimization}}
+\author{Hanxuan Li \\ 3220106039}
+\date{Oct. 16, 2023}
+
+\begin{document}
+\maketitle
+
+\begin{excercise}\label{e0}
+Please provide several main optimization forms in reinforcement learning.
+\end{excercise}
+\begin{SOLUTION}{e0}
+	% write your proof here.
+	\begin{enumerate}
+		\item Linear optimization
+			\begin{enumerate}
+				\item objective: minimize or maximize a linear objective function subject to linear equality and inequality constraints.
+				\item formulation: 
+				\begin{equation}
+					Minimize\ c^Tx\ subject\ to\ Ax \le b,\ x\ge 0
+				\end{equation}
+			\end{enumerate}
+		\item Quadratic optimization
+		\begin{enumerate}
+			\item objective: minimize or maximize a quadratic objective function subject to linear equality and inequality constraints.
+			\item formulation:
+			\begin{equation}
+				Minimize\ x^TQx+c^Tx\ subject\ to\ Ax\le b,\ x\ge 0
+			\end{equation}
+		\end{enumerate}
+		\item Deep Q-Network(DQN)
+		\begin{enumerate}
+			\item objective: optimize the action-value function $Q(s,a;\theta)$
+			\item formulation:
+			\begin{equation}
+				\mathop{min}_{\theta}\mathbb{E}_{s,a,r,s^{'}}[(Q(s,a;\theta)-(r+\lambda\mathop{max}_{a^{'}}Q(s^{'},a^{'};\theta^{-})))^2],\ with\ no\ explicit\ constraints
+			\end{equation}
+			Here, $\theta$ represents the network parameters, $s$ is a state, $a$ is an action, $r$ is a reward, $s^{'}$ is the next state, $\lambda$ is the discount factor, and $\theta^{-}$ are the parameters of the target network. 
+		\end{enumerate}
+	\end{enumerate}
+\end{SOLUTION}
+
+\begin{excercise}\label{e1}
+Please investigate what other commonly used oracles exist in the field of optimization, besides zeroth-order, first-order, and second-order oracles.
+\end{excercise}
+\begin{SOLUTION}{e1}
+% write your proof here.
+\begin{enumerate}
+	\item Stochastic Gradient Oracles: instead of providing the exact gradient, these orcales provide an estimate of the gradient based on a subset of the data(mini-batch) or a noisy estimate of the objective function.
+	\item Stochastic Hessian Oracles: return stochastic or approximated Hessians.
+	\item Subdifferential Oracles: return subgradients(generalizations of gradients for non-smooth functions),which are used in non-smooth optimization.
+	\item Bayesian Oracles: utilize Bayesian optimization techniques that model the objective function as a probabilistic process.
+	\item Quasi-Newton Oracles: return approximations of the Hessianmatrix using rank-one updates.
+\end{enumerate}
+\end{SOLUTION}
+
+
+\begin{excercise}\label{e2}
+	For the performance analysis of the Uniform Grid Method, Proof that
+	\begin{equation}
+		\left( \left \lfloor \frac{L}{2\epsilon} \right \rfloor + 2 \right)^n,\; \textrm{and } \; \left( \left \lfloor \frac{L}{2\epsilon} \right \rfloor \right)^n,\nonumber
+	\end{equation}
+	coincide up to an absolute constant multiplicative factor if $\epsilon \leq O(\frac{L}{n})$.
+\end{excercise}
+
+\begin{PROOF}{e2}
+% write your proof here.
+	Since $\epsilon \le O(\frac{L}{n})$,Then we have:
+	\begin{equation}
+		\begin{split}
+		\frac{\left( \left \lfloor \frac{L}{2\epsilon} \right \rfloor + 2 \right)^n}{\left( \left \lfloor \frac{L}{2\epsilon} \right \rfloor \right)^n} &= (1+\frac{1}{\frac{1}{2}\left \lfloor \frac{L}{2\epsilon} \right \rfloor})^n \le (1+\frac{1}{cn})^n=((1+\frac{1}{cn})^{cn})^{\frac{1}{c}}\mathop{=}\limits_{n\to \infty}(e)^{\frac{1}{c}},\\
+		\end{split}
+	\end{equation}
+	where $c$ is a constant, and we obtain the last equality from the following theorem:
+	\begin{equation}
+		\mathop{lim}_{n\to\infty}=(1+\frac{1}{n})^n=e
+	\end{equation}
+	Thus we reach the conclusion that $\left( \left \lfloor \frac{L}{2\epsilon} \right \rfloor + 2 \right)^n\; \textrm{and } \; \left( \left \lfloor \frac{L}{2\epsilon} \right \rfloor \right)^n\nonumber$ coincide up to an absolute constant multiplicative factor if $\epsilon \le O(\frac{L}{n})$.
+\end{PROOF}
+
+\end{document}

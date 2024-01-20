@@ -1,0 +1,105 @@
+\documentclass{article}
+\usepackage{hwopt}
+\usepackage{amsmath}	% Package for AMS
+\usepackage{amsthm}     % Package for AMS-therom
+\usepackage{amssymb}	% Package for AMS-symbol
+\usepackage{bm}
+
+\newcommand{\xB}{\bm{x}}
+\newcommand{\yB}{\bm{y}}
+\newcommand{\gB}{\bm{g}}
+\newcommand{\RBB}{\mathbb{R}}
+\newcommand{\FM}{\mathcal{F}}
+\newcommand{\SM}{\mathcal{S}}
+\newcommand{\LM}{\mathcal{L}}
+\newcommand{\domf}{\textrm{dom}\;f}
+\newcommand{\functiontype}[3]{\FM_{#1}^{#2,#3}(\RBB^n)}
+\newcommand{\normgen}[1]{\left\| #1 \right\|}
+\newcommand{\strongconvextype}[2]{\SM_{#1}^{#2}(\RBB^n)}
+\newcommand{\argmin}{\mathop{\rm argmin}}
+
+%%%%%%%%%%%%%%%%%
+%     Title     %
+%%%%%%%%%%%%%%%%%
+\title{Coursework (5) for \emph{Introductory Lectures on Optimization}}
+\author{Hanxuan Li \\ 3220106039}
+\date{Dec. 9, 2023}
+
+\begin{document}
+\maketitle
+
+\begin{excercise}\label{e0}
+Prove the following theorem: \\
+for any $\xB_0 \in \domf$, all vectors $\gB \in \partial f(\xB_0)$ are supporting to the level set $\LM_f (f(\xB_0))$:
+\begin{equation}
+	\innerproduct{\gB}{\xB_0 - \xB} \geq 0, \;\;\; \forall \xB \in \LM_f(f(\xB_0)) \equiv \{ \xB \in \domf: f(\xB) \leq f(\xB_0) \}
+\end{equation}
+\end{excercise}
+\begin{PROOF}{e0}
+
+Since $\gB \in \partial f(\xB_0)$, we have:
+\begin{equation}
+	\forall \xB \in \domf, f(\xB)\ge f(\xB_0)+\innerproduct{\gB}{\xB-\xB_0}
+\end{equation}
+Also, we have $\xB \in \LM_f(f(\xB_0))$, which means $f(\xB) \leq f(\xB_0)$. Thus, we have:
+\begin{equation}
+	f(\xB_0) \geq f(\xB) \geq f(\xB_0) + \innerproduct{\gB}{\xB - \xB_0}
+\end{equation}
+Thus we have $\innerproduct{\gB}{\xB - \xB_0} \le 0$. That is :
+\begin{equation}
+	\left\langle\gB,\xB\right\rangle\le\left\langle\gB,\xB_0\right\rangle,\;\;\;\forall \xB\in\LM_f(f(\xB_0))
+\end{equation}
+So by the definition of the supporting hyperplane, we have $\gB$ is supporting to the level set $\LM_f (f(\xB_0))$.
+
+\end{PROOF}
+
+\begin{excercise}\label{e1}
+Prove the following theorem: \\
+let $Q \subseteq \domf$ be a closed convex set,  $\xB_0 \in Q$ and 
+ \begin{equation}
+ 	\xB^* = \argmin \{ f(\xB) | \xB \in Q \}
+ \end{equation}
+ Then for any $g \in \partial f(\xB_0)$ we have $\innerproduct{\gB}{\xB_0 - \xB^*} \geq 0$.
+\end{excercise}
+\begin{PROOF}{e1}
+	
+Since $\xB^* = \argmin \{ f(\xB) | \xB \in Q \}$, we have:
+\begin{equation}
+	\forall \xB \in Q, f(\xB^*) \leq f(\xB)
+\end{equation}
+Also, we have $\xB_0 \in Q$, which means $f(\xB_0) \geq f(\xB^*)$. Thus, we have:
+\begin{equation}
+	f(\xB_0) \geq f(\xB^*) \geq f(\xB_0) + \innerproduct{\gB}{\xB^* - \xB_0}
+\end{equation}
+Thus we have $\innerproduct{\gB}{\xB^* - \xB_0} \le 0$. That is:
+For any $\gB \in \partial f(\xB_0)$, we have $\innerproduct{\gB}{\xB_0 - \xB^*} \geq 0$.
+
+\end{PROOF}
+
+\begin{excercise}\label{e2}
+Prove the following theorem: \\
+let $f$ be closed and convex. Assume that it is differentiable on its domain. Then 
+$\partial f(\xB) = \{ \nabla  f(\xB) \}$
+for any $\xB \in \textrm{int}(\domf)$.
+\end{excercise}
+
+\begin{PROOF}{e2}
+Notice that $\forall \bm{p} \in \mathbb{R} ^n$, we have:
+\begin{equation}
+	\left\langle \nabla f(\xB),\bm{p}\right\rangle = \lim_{t\rightarrow 0} \frac{f(\xB+t\bm{p})-f(\xB)}{t}
+\end{equation}
+Becausen $f^{'}(\bm{x}_0;\bm{p})=max\left\{\left\langle\bm{g},\bm{p}\right\rangle|\bm{g}\in\partial f(\bm{x}_0)\right\}$ for all $\bm{x}\in int(\domf)$
+So we have:
+\begin{equation}
+	\left\langle \nabla f(\xB),\bm{p}\right\rangle = f^{'}(\bm{x};\bm{p})\ge \left\langle\bm{g},\bm{p}\right\rangle
+\end{equation}
+That is:$\forall \bm{p}\in\mathbb{R}^n,\left\langle\nabla f(\bm{x})-\bm{g},\bm{p}\right\rangle\ge 0$.
+Let $\bm{p}=\bm{g}-\nabla f(\bm{x})$,we have:
+\begin{equation}
+	\Vert\bm{g}-\nabla f(\bm{x})\Vert^2\le 0
+\end{equation}
+So we have $\bm{g}=\nabla f(\bm{x})$.
+Because of the arbitrariness of $\bm{p}$ thus the arbitrariness of $\bm{g}$, we can reach the conclution that $\partial f(\bm{x})=\left\{\nabla f(\bm{x})\right\}$ for any $\xB \in \textrm{int}(\domf)$.
+
+\end{PROOF}
+\end{document}

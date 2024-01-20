@@ -1,0 +1,83 @@
+\documentclass{article}
+\usepackage{hwopt}
+
+%%%%%%%%%%%%%%%%%
+%     Title     %
+%%%%%%%%%%%%%%%%%
+\title{Coursework (2) for \emph{Introductory Lectures on Optimization}}
+\author{Hanxuan Li \\ 3220106039}
+\date{Oct. 16, 2023}
+
+\begin{document}
+\maketitle
+
+\begin{excercise}\label{e0}
+For the function $f(x): \mathbb{R}^n \rightarrow \mathbb{R}^m$, please write down the zeroth-order Taylor expansion with an integral remainder term.
+\end{excercise}
+
+\begin{SOLUTION}{e0}
+\begin{equation}
+	f(x)=f(a)+\int_0^1\nabla f(a+t(x-a))(x-a)dt
+\end{equation}
+\end{SOLUTION}
+
+\begin{excercise}\label{e1}
+Please write down the definition of the $p$-norm for a $n$-dimensional real vector.
+\end{excercise}
+
+\begin{SOLUTION}{e1}
+\begin{equation}
+	\Vert x \Vert_p=(\vert x_1\vert^p+\vert x_2\vert^p+\cdots+\vert x_n\vert^p)^{\frac{1}{p}}
+\end{equation}
+\end{SOLUTION}
+
+
+\begin{excercise}\label{e2}
+Please write down the definition of the matrix norms induced by vector $p$-norms.
+\end{excercise}
+
+\begin{SOLUTION}{e2}
+\begin{equation}
+	\Vert A \Vert_p=\mathop{sup}_{x\neq0}\frac{\Vert Ax\Vert_p}{\Vert x\Vert_p}
+\end{equation}
+\end{SOLUTION}
+
+
+\begin{excercise}\label{e3}
+	Let $A$ be an $n \times n$ symmetric matrix. Proof that $A$ is positive semidefinite if and only if all eigenvalues of $A$ are nonnegative. Moreover, $A$ is positive definite if and only if all eigenvalues of $A$ are positive.
+\end{excercise}
+
+\begin{PROOF}{e3}
+	\begin{enumerate}
+		\item $A$ is positive semidefinite iff all eigenvalues of $A$ are nonnegative
+		\begin{enumerate}
+			\item Sufficient condition:
+			If $A$ is semidefinite, then for any non-zero vector $x$, we have $x^TAx\ge0$. \\
+			Let $\lambda$ be an arbitary eigenvalue of $A$, and $v$ be the corresponding eigenvector, thus we have $Av=\lambda v$.\\
+			Then:
+			\begin{equation}
+				v^TAv=v^T\lambda v=\lambda \Vert v\Vert^2 \ge 0
+			\end{equation}
+			Since $\Vert x\Vert \ge0$, it follows that $\lambda$ must be nonnegative.\\
+			Without loss of generality, all eigenvalues of $A$ are nonnegative.
+			\item Necessary condition:
+			Since $A$ is a symmetric matrix, so it must have $n$ eigenvalues,let's say: $\lambda_1,\lambda_2,\cdots,\lambda_n$, and the corresponding eigenvectors(normalized,i.e.$\Vert v_i\Vert==1$) $v_1,v_2,\cdots,v_n$ which are linearly independent and actually orthogonal to each other, that is:
+			\begin{equation}
+				v_i^Tv_j=
+				\begin{cases}
+					0&i\neq j\\
+					1&i=j
+				\end{cases}
+			\end{equation}
+			So $\forall x$,we can express $x=c_1v_1+c_2v_2\cdots c_nv_n$, where $c_1,c_2,\cdots,c_n \in \mathbb{R}$. \\ Then we have:
+			\begin{equation}
+				x^TAx=(c_1v_1+c_2v_2\cdots c_nv_n)^TA(c_1v_1+c_2v_2\cdots c_nv_n)=c_1^2\lambda_1+c_2^2\lambda_2+\cdots+c_n^2\lambda_n \ge 0
+			\end{equation}
+			So $A$ is positive semidefinite.
+		\end{enumerate}
+		\item $A$ is positive definite iff all eigenvalues of $A$ are positive.\\
+		The proof of this statement is almost the same to the previous one, with the only modification being changing ``greater than or equal to" sign to ``strict greater" sign.
+	\end{enumerate}
+\end{PROOF}
+
+\end{document}

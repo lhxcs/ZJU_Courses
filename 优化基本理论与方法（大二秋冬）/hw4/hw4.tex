@@ -1,0 +1,110 @@
+\documentclass{article}
+\usepackage{hwopt}
+\usepackage{amsmath}	% Package for AMS
+\usepackage{amsthm}     % Package for AMS-therom
+\usepackage{amssymb}	% Package for AMS-symbol
+\usepackage{bm}
+
+\newcommand{\xB}{\bm{x}}
+\newcommand{\yB}{\bm{y}}
+\newcommand{\RBB}{\mathbb{R}}
+\newcommand{\FM}{\mathcal{F}}
+\newcommand{\SM}{\mathcal{S}}
+\newcommand{\functiontype}[3]{\FM_{#1}^{#2,#3}(\RBB^n)}
+\newcommand{\normgen}[1]{\left\| #1 \right\|}
+\newcommand{\strongconvextype}[2]{\SM_{#1}^{#2}(\RBB^n)}
+
+%%%%%%%%%%%%%%%%%
+%     Title     %
+%%%%%%%%%%%%%%%%%
+\title{Coursework (3) for \emph{Introductory Lectures on Optimization}}
+\author{Hanxuan Li \\ 3220106039}
+\date{Nov. 23, 2023}
+
+\begin{document}
+\maketitle
+
+\begin{excercise}\label{e0}
+Proof that $\mu$-Strongly convex functions are $\mu$-Error Bounds.
+\end{excercise}
+\begin{PROOF}{e0}
+Suppose $f$ is $\mu$ convex, then for $\xB\in \mathbb{R}^n, \yB\in\mathbb{R}^n$,we have:
+\begin{equation}
+	f(\yB)\ge f(\xB)+\langle\nabla f(\xB),\yB-\xB\rangle+\frac{\mu}{2}\Vert \yB-\xB\Vert^2
+\end{equation}
+Thus we have:
+\begin{equation}
+	\mathop{\min}_{\yB}\left\{{f(\yB)}\right\}\ge \mathop{\min}_{\yB}\left\{f(\xB)+\langle\nabla f(\xB),\yB-\xB\rangle+\frac{\mu}{2}\Vert \yB-\xB\Vert^2\right\}
+\end{equation}
+LHS is $f(\xB^{*})$,And the minumum of RHS can be solved by$\nabla RHS=\nabla f(\xB)+\mu(\yB-\xB)=0$
+
+Thus we have the optimal $\hat{\yB}=\xB-\frac{1}{\mu}\nabla f(\xB)$, so we have:
+\begin{equation}
+	f(\xB^{*})\ge f(\xB)-\frac{1}{2\mu}\Vert \nabla f(\xB)\Vert^2
+\end{equation}
+That is:
+\begin{equation}
+	\Vert\nabla f(\xB)\Vert^2\ge 2\mu (f(\xB)-f(\xB^{*}))
+\end{equation}
+And by the definition of strong convex function and $\nabla f(\xB^{*})=0$ we have:
+\begin{align}
+	f(\xB)&\ge f(\xB^{*})+\langle\nabla f(\xB^{*}),\xB-\xB^{*}\rangle+\frac{\mu}{2}\Vert \xB-\xB^{*}\Vert^2\\
+	&=f(\xB^{*})+\frac{\mu}{2}\Vert\xB-\xB^{*}\Vert^2
+\end{align}
+Substitute (6) into (4) we have:
+\begin{equation}
+	\Vert\nabla f(\xB)\Vert^2\ge \mu ^2\Vert\xB-\xB^{*}\Vert^2
+\end{equation}
+That is $\Vert \nabla f(\xB)\Vert \ge \mu\Vert \xB-\xB^{*}\Vert$, which is exactly $\mu-$Error Bounds.
+\end{PROOF}
+
+\begin{excercise}\label{e1}
+ Let $f$ be continuously differentiable. Proof that both conditions below, holding for all $\xB, \yB \in \RBB^n$  and $\alpha \in [0,1]$, are equivalent to inclusion: $\strongconvextype{\mu}{1}$
+\begin{equation}\label{eq:2:1:17}
+	\innerproduct{\nabla f(\xB) - \nabla f(\yB)}{\xB - \yB} \geq \mu \normgen{\xB - \yB}^2,
+\end{equation}
+and
+\begin{align}
+	\alpha f(\xB) + (1-\alpha) f(\yB) &\geq f(\alpha \xB + (1-\alpha) \yB )\nonumber\\
+	&+ \alpha (1-\alpha) \frac{\mu}{2} \normgen{\xB - \yB}^2.\label{eq:2:1:18}
+\end{align}
+\end{excercise}
+\begin{PROOF}{e1}
+
+Consider the definition of strong convex function:
+\begin{equation}
+	f\in \mathcal{S}_{\mu}^{1} \iff \exists \mu >0 ,s.t. \forall \xB,\yB\in \mathbb{R}^n, f(\yB)\ge f(\xB)+\langle\nabla f(\xB),\yB-\xB\rangle+\frac{1}{2}\mu \Vert \yB-\xB\Vert^2
+\end{equation}
+By transformation, we can obtain:
+\begin{equation}
+	f(\yB)-\frac{\mu}{2}\Vert\yB\Vert^2\ge f(\xB)-\frac{\mu}{2}\Vert \xB\Vert^2+\langle\nabla f(\xB)-\mu\xB,\yB-\xB\rangle
+\end{equation}
+By the definition of convex function, we have $f(\xB)-\frac{\mu}{2}\Vert x\Vert^2$ is convex.
+
+Recall that $f$ is convex $\iff$ $\langle\nabla f(\xB)-\nabla f(\yB),\xB-\yB\rangle\ge 0$
+So 
+\begin{equation}
+	\langle(\nabla f(\xB)-\mu \xB)-(\nabla f(\yB)-\mu \yB),\yB-\xB\rangle\ge 0
+\end{equation}
+That is, $\langle\nabla f(\xB)-\nabla f(\yB),\xB-\yB\rangle\ge \mu\Vert \xB-\yB\Vert^2$
+
+The proof above is euqivalent.
+
+For the second condition, recall that the equivalent definition of the convex function:
+\begin{equation}
+	For \alpha\in [0,1],\forall \xB,\yB,\alpha f(\xB)+(1-\alpha)f(\yB)\ge f(\alpha\xB+(1-\alpha)\yB)
+\end{equation}
+In this case, $f(\xB)-\frac{\mu}{2}$ is convex, So:
+\begin{equation}
+	\alpha(f(\xB)-\frac{\mu}{2}\Vert \xB\Vert^2)+(1-\alpha)(f(\yB)-\frac{\mu}{2}\Vert\yB\Vert^2)\ge f(\alpha\xB+(1-\alpha)\yB)-\frac{\mu}{2}\Vert\alpha\xB+(1-\alpha)\yB\Vert^2
+\end{equation}
+By transformation, we can obtain the result:
+\begin{align}
+	\alpha f(\xB)+(1-\alpha)f(\yB)&\ge f(\alpha\xB+(1-\alpha)\yB)+\alpha\frac{\mu}{2}\Vert\xB\Vert^2+(1-\alpha)\frac{\mu}{2}\Vert\yB\Vert^2-\frac{\mu}{2}\Vert\alpha\xB+(1-\alpha)\yB\Vert^2\\
+	&=f(\alpha\xB+(1-\alpha)\yB)+\alpha(1-\alpha)\frac{\mu}{2}\Vert\yB-\xB\Vert^2
+\end{align}
+
+The proof above is equivalent as well.
+
+\end{PROOF}
+\end{document}

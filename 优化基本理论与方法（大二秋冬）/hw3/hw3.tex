@@ -1,0 +1,307 @@
+\documentclass{article}
+\usepackage{hwopt}
+\usepackage{amsmath}	% Package for AMS
+\usepackage{amsthm}     % Package for AMS-therom
+\usepackage{amssymb}	% Package for AMS-symbol
+\usepackage{bm}
+
+\newcommand{\xB}{\bm{x}}
+\newcommand{\yB}{\bm{y}}
+\newcommand{\RBB}{\mathbb{R}}
+\newcommand{\FM}{\mathcal{F}}
+\newcommand{\functiontype}[3]{\FM_{#1}^{#2,#3}(\RBB^n)}
+\newcommand{\normgen}[1]{\left\| #1 \right\|}
+
+%%%%%%%%%%%%%%%%%
+%     Title     %
+%%%%%%%%%%%%%%%%%
+\title{Coursework (3) for \emph{Introductory Lectures on Optimization}}
+\author{Hanxuan Li \\ 3220106039}
+\date{Nov. 21, 2023}
+
+\begin{document}
+\maketitle
+
+\begin{excercise}\label{e0}
+Proof that if $f_i(\xB)$, $i \in I$, are convex, then
+\[
+g(\xB) = \max_{i \in I} f_i(\xB)
+\]
+is also convex.
+\end{excercise}
+\begin{PROOF}{e0}
+
+	Because $\forall i\in I$, $f_i(\xB)$ are convex, we have:
+	\begin{equation}
+		\forall i\in I,f_i(\alpha\xB+(1-\alpha)\yB)\le \alpha f_i(\xB)+(1-\alpha)f_i(\yB)\le \alpha g(\xB)+(1-\alpha)g(\yB)
+	\end{equation}
+	where $\alpha\in [0,1]$. So we have:
+	\begin{equation}
+		g(\alpha \xB+(1-\alpha)\yB)=\mathop{max}_{i\in I}\left\{ f_i(\alpha\xB+(1-\alpha)\yB)\right\}\le max\left\{\alpha g(\xB)+(1-\alpha)g(\yB)\right\}=\alpha g(\xB)+(1-\alpha)g(\yB)
+	\end{equation}
+	where $\alpha\in [0,1]$. So $g(\xB)$ is also convex.
+\end{PROOF}
+
+\begin{excercise}\label{e1}
+Proof that 
+\begin{enumerate}
+%
+\item  if $f$ is a convex function on $\RBB^n$ and  $F(\cdot)$ is a convex and non-decreasing function on $\RBB$, then $g(\xB) = F(f(\xB))$ is convex.
+%
+\item If $f_i, i=1,\ldots, m$ are convex functions on $\RBB^n$ and  $F(\yB_1, \ldots, \yB_m)$ is convex and non-decreasing (component-wise) in each argument, then 
+\[
+g(\xB) = F(f_1(\xB), \ldots, f_m(\xB))
+\]
+is convex.
+\end{enumerate}
+\end{excercise}
+\begin{PROOF}{e1}
+
+	\begin{enumerate}
+		\item Because $f$ is convex, so $\forall \alpha \in [0,1]$, we have
+		\begin{equation}
+			f(\alpha \xB+(1-\alpha) \yB)\le \alpha f(\xB)+(1-\alpha)(f(\yB))
+		\end{equation}
+		So we have $\forall \alpha \in [0,1]$:
+			\begin{align}
+				g(\alpha \xB+(1-\alpha) \yB)&=F(f(\alpha \xB+(1-\alpha) \yB))\\
+				&\le F(\alpha f(\xB)+(1-\alpha)(f(\yB)))\\ 
+				&\le \alpha F(f(\xB))+(1-\alpha)F(f(\yB))\\ 
+				&=\alpha g(\xB)+(1-\alpha)g(\yB)
+			\end{align}
+		We obtain (5) because $F$ is non-decreasing and (3), and we obatin (6) because $F$ is convex.Thus from (7) we obtain that $g(\xB)$ is convex.
+		\item Because $f$ is convex, so $\forall \alpha \in [0,1]$, we have
+		\begin{equation}
+			f(\alpha \xB+(1-\alpha) \yB)\le \alpha f(\xB)+(1-\alpha)(f(\yB))
+		\end{equation}
+		So we have $\forall \alpha \in [0,1]$:
+		\begin{align}
+			g(\alpha \xB+(1-\alpha) \yB)&=F(f_1(\alpha \xB+(1-\alpha) \yB),\cdots,f_m(\alpha \xB+(1-\alpha) \yB))\\
+			&\le F(\alpha f_1(\xB)+(1-\alpha)(f_1(\yB)),\cdots,\alpha f_m(\xB)+(1-\alpha)(f_m(\yB)))\\
+			&\le \alpha F(f_1(x),\cdots,f_m(x))+(1-\alpha)F(f_1(x),\cdots,f_m(x))\\
+			&=\alpha g(\xB)+(1-\alpha)g(\yB)
+		\end{align}
+		We obtain (10) because $F$ is non-decreasing and (8), and we obatin (11) because $F$ is convex.Thus from (12) we obtain that $g(\xB)$ is convex.
+	\end{enumerate}
+\end{PROOF}
+
+\begin{excercise}\label{e2}
+Proof that if $f(\xB, \yB)$ is convex in $(\xB, \yB) \in \RBB^n$ and  $Y$ is a convex set, then 
+\[
+g(\xB) = \inf_{\yB \in Y}f(\xB, \yB)
+\]
+is convex.
+\end{excercise}
+\begin{PROOF}{e2}
+For given $\bm{x_1},\bm{x_2}$, we define $\left\{\bm{y_n}^{(1)}\right\},\left\{\bm{y_n}^{(2)}\right\}$ as follows:
+
+\begin{equation}
+	\inf_{\bm{y}\in Y}f(\bm{x_1},\bm{y})=\mathop{lim}_{n\rightarrow \infty}f(\bm{x_1},\bm{y_n}^{(1)})
+\end{equation}
+\begin{equation}
+	\inf_{\bm{y}\in Y}f(\bm{x_2},\bm{y})=\mathop{lim}_{n\rightarrow \infty}f(\bm{x_2},\bm{y_n}^{(2)})
+\end{equation}
+So we have:
+\begin{align}
+	\alpha g(\bm{x_1})+(1-\alpha)g(\bm{x_2})&=\alpha \inf_{\bm{y}\in Y}f(\bm{x_1},\bm{y})+(1-\alpha)\inf_{\bm{y}\in Y}f(\bm{x_2},\bm{y})\\
+	&= \alpha \mathop{lim}_{n\rightarrow \infty}f(\bm{x_1},\bm{y_n}^{(1)})+(1-\alpha)\mathop{lim}_{n\rightarrow \infty}f(\bm{x_2},\bm{y_n}^{(2)}) \\
+	&= \mathop{lim}_{n\rightarrow \infty}(\alpha f(\bm{x_1},\bm{y_n}^{(1)})+(1-\alpha)f(\bm{x_2},\bm{y_n}^{(2)}) )\\
+	&\ge \mathop{lim}_{n\rightarrow \infty}f(\alpha \bm{x_1}+(1-\alpha)\bm{x_2},\alpha \bm{y_n}^{(1)}+(1-\alpha)\bm{y_n}^{(2)})\\
+	&\ge \inf_{\bm{y}\in Y}f(\alpha \bm{x_1}+(1-\alpha)\bm{x_2},\bm{y})\\
+	&=g(\alpha \bm{x_1}+(1-\alpha) \bm{x_2})
+\end{align}
+We obtain (18) because $f(\bm{x},\bm{y})$ is convex, and we obtain (19) since $Y$ is a convex set.
+So from (20) we have proved that $g(\xB)$ is also convex.
+\end{PROOF}
+
+\begin{excercise}\label{e3}
+	Proof that the following univariate functions are in the set of $\mathcal{F}^1(\mathbb{R})$：
+	\begin{align}
+		f(x) &= e^x,\nonumber \\
+		f(x) &= |x|^p,\; p > 1,\nonumber \\
+		f(x) &= \frac{x^2}{1 + |x|},\nonumber \\
+		f(x) &= |x| - \ln (1 + |x|).\nonumber
+	\end{align}
+\end{excercise}
+\begin{PROOF}{e3}
+From lecture, we have a continuously differentiable function $f$ belongs to $\mathcal{F}^1(\mathbb{R}^n)$ iff for any $x,y\in \mathbb{R}^n$ we have:
+\begin{equation}
+	\langle\nabla f(\bm{x})-\nabla f(\bm{y}),\bm{x}-\bm{y}\rangle\ge 0
+\end{equation}
+\begin{enumerate}
+	\item $f(x)=e^x$
+	Obviously, we have:
+	\begin{equation}
+		\langle\nabla f(x)-\nabla f(y),x-y\rangle=(e^x-e^y)(x-y)\ge 0
+	\end{equation}
+	So $f(x)=e^x$ is in the set of $\mathcal{F}^1(\mathbb{R})$
+	\item $f(x)=\lvert x\rvert^p,p>1$
+	we have:
+	\begin{equation}
+		f{'}(x)=\begin{cases}
+			p\vert x\vert^{(p-1)}&x>0\\
+			0&x=0\\
+			-p\vert x\vert^{(p-1)}&x<0
+		\end{cases}
+	\end{equation}
+	Now divide the problem into four cases:
+	\begin{enumerate}
+		\item $x\ge 0,y\ge 0$:
+		we have $\langle\nabla f(x)-\nabla f(y),x-y\rangle =p(x^{p-1}-y^{p-1})(x-y)\ge 0$
+		\item $x\ge 0,y<0$
+		we have $\langle\nabla f(x)-\nabla f(y),x-y\rangle = p(x^{p-1}+\vert y\vert ^{p-1})(x-y)\ge 0$
+		\item $x<0,y\ge 0$
+		we have $\langle\nabla f(x)-\nabla f(y),x-y\rangle = p(-\vert x\vert ^{p-1}-y^{p-1})(x-y)$\\
+
+		since $x-y<0$ and $-\vert x\vert ^{p-1}-y^{p-1}<0$, we have $\langle\nabla f(x)-\nabla f(y),x-y\rangle\ge 0 $
+		\item $x<0,y<0$
+		we have $\langle\nabla f(x)-\nabla f(y),x-y\rangle=p(-\vert x\vert ^{p-1}+\vert y\vert ^{p-1})(x-y)\ge 0$
+	\end{enumerate}
+	Above all, we have $\langle\nabla f(x)-\nabla f(y),x-y\rangle\ge 0$, So end of the proof.
+	\item $f(x)=\frac{x^2}{1+\vert x\vert}$
+	Firstly, we have
+	\begin{equation}
+		f^{'}(x)=\begin{cases}
+			1-\frac{1}{(1+\vert x\vert)^2}&x>0\\
+			0&x=0\\
+			\frac{1}{(1+\vert x\vert)^2}-1&x<0
+		\end{cases}
+	\end{equation}
+	Then:
+	\begin{enumerate}
+		\item $x\ge 0,y\ge 0$
+		$\langle\nabla f(x)-\nabla f(y),x-y\rangle=(\frac{1}{(1+\vert x\vert)^2}-\frac{1}{(1+\vert y\vert)^2})(x-y)\ge 0 $
+		\item $x\ge 0,y<0$
+		$\langle\nabla f(x)-\nabla f(y),x-y\rangle=(2-\frac{1}{(1+\vert x\vert)^2}-\frac{1}{(1+\vert y\vert)^2})(x-y)$
+		Since $x>y$ and $f(x)=\frac{1}{(1+\vert x\vert)^2}\le 1$,so $2-\frac{1}{(1+\vert x\vert)^2}-\frac{1}{(1+\vert y\vert)^2}\ge 0$, thus $\langle\nabla f(x)-\nabla f(y),x-y\rangle\ge 0$
+		\item $y\ge 0,x<0$ simliar as case (b), just switching $x,y$.
+		\item $x<0,y<0$
+		$\langle\nabla f(x)-\nabla f(y),x-y\rangle=(\frac{1}{(1+\vert y\vert)^2}-\frac{1}{(1+\vert x\vert)^2})(x-y)\ge 0$
+	\end{enumerate}
+	Above all, $\langle\nabla f(x)-\nabla f(y),x-y\rangle\ge 0$, so end of the proof.
+	\item $f(x)=\vert x\vert -ln(1+\vert x\vert)$
+	Firstly, we have:
+	\begin{equation}
+		f^{'}(x)=\begin{cases}
+			1-\frac{1}{1+\vert x\vert}&x>0\\
+			0&x=0\\
+			\frac{1}{1+\vert x\vert}-1&x<0
+		\end{cases}
+	\end{equation}
+	Then:
+	\begin{enumerate}
+		\item $x\ge 0,y\ge 0$
+		$\langle\nabla f(x)-\nabla f(y),x-y\rangle=(\frac{1}{1+\vert x\vert}-\frac{1}{1+\vert y\vert})(x-y)\ge 0$
+		\item $x\ge 0,y<0$
+		$\langle\nabla f(x)-\nabla f(y),x-y\rangle=(2-\frac{1}{1+\vert y\vert}-\frac{1}{1+\vert x\vert})(x-y)$
+		Also, we have $f(x)=\frac{1}{1+\vert x\vert}\le 1$,So $2-\frac{1}{1+\vert y\vert}-\frac{1}{1+\vert x\vert}\ge 0$, thus $\langle\nabla f(x)-\nabla f(y),x-y\rangle\ge 0$
+		\item $x<0,y\ge 0$: simliar as case (b), just switching $x,y$.
+		\item $x<0,y<0$:
+		$\langle\nabla f(x)-\nabla f(y),x-y\rangle=(\frac{1}{1+\vert y\vert}-\frac{1}{1+\vert x\vert})(x-y)\ge 0$
+	\end{enumerate}
+	Above all, we have $\langle\nabla f(x)-\nabla f(y),x-y\rangle\ge 0$, so end of the proof.
+\end{enumerate}
+\end{PROOF}
+
+\begin{excercise}\label{e4}
+For $f \in \functiontype{L}{1}{1}$ and function $\phi(\yB) = f(\yB) - \innerproduct{\nabla f(\xB_0)}{\yB}$, prove that $\phi \in \functiontype{L}{1}{1}$, and its optimal point is $\yB^* = \xB_0$.
+\end{excercise}
+\begin{PROOF}{e4}
+	\begin{enumerate}
+		\item $\phi (y)$ is continuously differentiable:
+		Obviously we have:
+		\begin{equation}
+			\nabla \phi(y)=\nabla f(y)-\nabla f(x_0)
+		\end{equation}
+		Since $f\in \mathcal{F}_{L}^{1,1}(\mathbb{R}^n)$, so $f(x)$ is continuously differentiable.
+		So $\phi (y)$ is continuously differentiable.
+		\item $\phi (y)$ is convex:
+		Since $f\in \mathcal{F}_{L}^{1,1}(\mathbb{R}^n)$, so $f(x)$ is convex, which means $\langle\nabla f(x)-\nabla f(y),x-y\rangle\ge 0$
+		So 
+		\begin{equation}
+			\langle\nabla \phi(x)-\nabla \phi(y),x-y\rangle=\langle\nabla f(x)-\nabla f(y),x-y\rangle\ge 0
+		\end{equation}
+		which means $\phi (x)$ is convex.
+		\item $\phi(y)$ satisfies the Lipschitz continuous with constant $L$.
+		Since $f\in \mathcal{F}_{L}^{1,1}(\mathbb{R}^n)$, so $\vert \nabla f(x)-\nabla f(y)\vert \le L\Vert x-y\Vert ^2$
+		we have 
+		\begin{equation}
+			\vert \nabla \phi(x)-\nabla \phi(y)\vert=\vert \nabla f(x)-\nabla f(y)\vert \le L\Vert x-y\Vert ^2
+		\end{equation}
+		Above all, $\phi(y)\in \mathcal{F}_L^{1,1}(\mathbb{R}^n)$
+		We can easily find that $\nabla \phi(\bm{x_0})=0$. 
+		
+		Because of the properties that the convex function satisfies, $y^*=\bm{x_0}$ must be the global minimum, i.e, optimal point. 
+	\end{enumerate}
+\end{PROOF}
+
+\begin{excercise}\label{e5}
+Proof that, for $f: \RBB^n \rightarrow \RBB$ and $\alpha$ from $[0,1]$,  if
+\begin{align*} 
+	\alpha f(\xB) + (1-\alpha) f(\yB) &\geq f( \alpha \xB + (1-\alpha) \yB) \nonumber \\
+	&+ \frac{\alpha(1-\alpha)}{2L} \normgen{\nabla f(\xB) - \nabla f(\yB)}^2, 
+\end{align*}
+then $f \in \functiontype{L}{1}{1}$.
+\end{excercise}
+\begin{PROOF}{e5}
+
+	\begin{align}
+		\alpha f(\xB) + (1-\alpha) f(\yB) &\geq f( \alpha \xB + (1-\alpha) \yB) \nonumber+ \frac{\alpha(1-\alpha)}{2L} \normgen{\nabla f(\xB) - \nabla f(\yB)}^2\\
+		& \ge f(\alpha \xB+(1-\alpha)\yB)
+	\end{align}
+
+	So $f(x)$ is convex.
+
+
+	Now we should prove that $f$ satisfies the Lipschitz condition.We have:
+	\begin{equation}
+		\alpha f(\xB) + (1-\alpha) f(\yB) \geq f( \alpha \xB + (1-\alpha) \yB) \nonumber+ \frac{\alpha(1-\alpha)}{2L} \normgen{\nabla f(\xB) - \nabla f(\yB)}^2\\
+	\end{equation}
+		
+	\begin{equation}
+		f(\yB)\ge \frac{f(\alpha \xB + (1-\alpha) \yB)-\alpha f(\xB)}{1-\alpha}+\frac{\alpha}{2L} \Vert \nabla f(\xB) - \nabla f(\yB)\Vert ^2
+	\end{equation}
+
+	When $\alpha\rightarrow 1$,
+	\begin{equation}
+		f(\yB) \ge f(\xB)+\langle\nabla f(\xB),\yB-\xB\rangle+\frac{1}{2L}\Vert \nabla f(\xB)-\nabla f(\yB)\Vert ^2
+	\end{equation} 
+	switching $\xB,\yB$ in (27),and add them together, we obtain:
+	\begin{equation}
+		\frac{1}{L}\Vert \nabla f(\xB)-\nabla f(\yB)\Vert ^2\le \langle\nabla f(\yB)-\nabla f(\xB),\yB-\xB\rangle
+	\end{equation}
+	Applying Cauchy-Schwarz inequailty,
+	\begin{align}
+		\frac{1}{L}\Vert \nabla f(\xB)-\nabla f(\yB)\Vert ^2 &\le \langle\nabla f(\yB)-\nabla f(\xB),\yB-\xB\rangle\\
+		&\le \Vert \nabla f(\yB)-\nabla f(\xB)\Vert \Vert \yB-\xB\Vert
+	\end{align}
+	That is: $\vert \nabla f(\xB)-\nabla f(\yB)\vert \le L\Vert \yB-\xB \Vert$.
+	
+	So, $f\in \mathcal{F}_{L}^{1,1}(\mathbb{R}^n)$
+
+
+
+\end{PROOF}
+
+\begin{excercise}\label{e6}
+	Proof that, for $f: \RBB^n \rightarrow \RBB$ and $\alpha$ from $[0,1]$,  if
+\begin{align*} 
+	0  \leq  \alpha f(\xB) + (1-\alpha) f(\yB)  &-  f( \alpha \xB + (1-\alpha) \yB) \nonumber \\
+	&\leq \alpha (1-\alpha) \frac{L}{2} \normgen{\xB - \yB}^2,
+\end{align*}
+	then $f \in \functiontype{L}{1}{1}$.
+\end{excercise}
+\begin{PROOF}{e6}
+	From the inequailty given above, we can obtain:
+	\begin{equation}
+		f(\yB)\le \frac{f(\alpha \xB+(1-\alpha)\yB)-\alpha f(\xB)}{1-\alpha}+\frac{\alpha L}{2}\Vert \yB-\xB\Vert ^2
+	\end{equation}
+	
+	When $\alpha \rightarrow 1$, we have
+	\begin{equation}
+		f(\yB)\le f(\xB) +\langle\nabla f(\xB),\yB-\xB\rangle+\frac{L}{2}\Vert \yB-\xB\Vert ^2
+	\end{equation} 
+	And it is equivalent to the conclusion that $f\in \mathcal{F}_L^{1,1}(\mathbb{R}^n)$. So end of the proof.
+\end{PROOF}
+
+\end{document}
