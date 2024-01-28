@@ -1,0 +1,371 @@
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+% Copyright note: This package 0.2 defines how opt course report should
+% be typeset.
+% Please check for updates.
+% Author: qianhui@zju.edu.cn
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\ProvidesPackage{optreport}[2020/12/12 v.02 A package for opt course report.]
+
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+% Package required.
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+\RequirePackage{xltxtra,fontspec,xunicode}
+\RequirePackage[slantfont]{xeCJK}
+\RequirePackage{geometry}
+\RequirePackage{titlesec}
+\RequirePackage{titletoc}
+\RequirePackage{indentfirst}
+\RequirePackage{zhnumber}
+\RequirePackage[numbers]{natbib}
+\RequirePackage[dvipsnames,usenames]{color}
+\RequirePackage{algorithm}
+\RequirePackage{algorithmic}
+\RequirePackage{ulem}
+\RequirePackage{caption}
+\RequirePackage{array}
+\RequirePackage{makecell}
+\RequirePackage{longtable}
+\RequirePackage{chngpage}
+\RequirePackage{fp}
+\RequirePackage{amsmath}	% Package for AMS
+\RequirePackage{amsthm}		% Package for AMS-therom
+\RequirePackage{amssymb}	% Package for AMS-symbol
+\RequirePackage{algorithm}
+\RequirePackage{algorithmic}
+\RequirePackage{indentfirst} 
+
+\usepackage[%
+bookmarks=True,%
+bookmarksdepth=5,%
+colorlinks,%
+linkcolor=blue,%
+anchorcolor=blue,%
+citecolor=blue%
+]{hyperref}
+
+%-----------------------------------------------------------------------------
+% Set English fonts
+%-----------------------------------------------------------------------------
+%\setmainfont{Times New Roman}
+%\setsansfont{Arial}
+%\setmonofont{Courier New}
+
+\IfFontExistsTF{Times New Roman}{ %
+\setmainfont{Times New Roman} %
+}{ %
+\setmainfont[Path=extrafonts/]{Times New Roman} %
+}
+
+\IfFontExistsTF{Arial}{ %
+\setsansfont{Arial} %
+}{ %
+\setsansfont[Path=extrafonts/]{Arial} %
+}
+
+\IfFontExistsTF{Courier New}{ %
+\setmonofont{Courier New} %
+}{ %
+\setmonofont[Path=extrafonts/]{Courier New}%
+}
+
+%-----------------------------------------------------------------------------
+% Set Chinese fonts: XeCJK
+%-----------------------------------------------------------------------------
+
+%-----------------------------------------------------------------------------
+% Set Chinese punct style: XeCJK
+\punctstyle{kaiming}
+
+%-----------------------------------------------------------------------------
+\DeclareRobustCommand{\switchfont}{\selectfont\setlength{\parindent}{2em}}
+\RequirePackage{expl3}[2012-07-08]
+\ExplSyntaxOn
+\cs_new_eq:NN \fpeval \fp_eval:n
+\ExplSyntaxOff
+\newcommand{\myscale}{1.8125}
+\DeclareRobustCommand{\fonthao}[1] %
+{%
+\fontsize{#1pt}{\fpeval{#1*\myscale}pt}\switchfont %
+}
+%-----------------------------------------------------------------------------
+\DeclareRobustCommand{\chuhao}{\fonthao{42}}
+\DeclareRobustCommand{\xiaochu}{\fonthao{36}}
+\DeclareRobustCommand{\dayihao}{\fonthao{28}}
+\DeclareRobustCommand{\yihao}{\fonthao{26}}
+\DeclareRobustCommand{\xiaoyi}{\fonthao{24}}
+\DeclareRobustCommand{\erhao}{\fonthao{22}}
+\DeclareRobustCommand{\zhonger}{\fonthao{20}}
+\DeclareRobustCommand{\xiaoer}{\fonthao{18}}
+\DeclareRobustCommand{\sanhao}{\fonthao{16}}
+\DeclareRobustCommand{\xiaosan}{\fonthao{15}}
+\DeclareRobustCommand{\sihao}{\fonthao{14}}
+\DeclareRobustCommand{\xiaosi}{\fonthao{12}}
+\DeclareRobustCommand{\wuhao}{\fonthao{10.5}}
+\DeclareRobustCommand{\xiaowu}{\fonthao{9}}
+\DeclareRobustCommand{\liuhao}{\fonthao{7.5}}
+\DeclareRobustCommand{\xiaoliu}{\fonthao{6.5}}
+\DeclareRobustCommand{\qihao}{\fonthao{5.5}}
+\DeclareRobustCommand{\bahao}{\fonthao{5}}
+
+%-----------------------------------------------------------------------------
+% 与CJK 包类似，使用命令\CJKfamily{.family name.} 可以改变当前中文字体
+%-----------------------------------------------------------------------------
+%\setCJKmainfont{FangSong}
+%\setCJKsansfont{KaiTi}
+%\setCJKmonofont{SimHei}
+
+%\setCJKfamilyfont{FangSong}{FangSong}
+%\setCJKfamilyfont{HeiTi}{SimHei}
+%\setCJKfamilyfont{KaiShu}{KaiTi}
+%\setCJKfamilyfont{SongTi}{SimSun}
+
+\IfFontExistsTF{FangSong}{ %
+\setCJKmainfont{FangSong} %
+\setCJKfamilyfont{FangSong}{FangSong} %
+}{ %
+%\setCJKmainfont[Path=extrafonts/]{FZFangSong-Z02S} %
+%\setCJKfamilyfont{FangSong}[Path=extrafonts/]{FZFangSong-Z02S} %
+\setCJKmainfont[Path=extrafonts/]{FangSong} %
+\setCJKfamilyfont{FangSong}[Path=extrafonts/]{FangSong} %
+}
+
+\IfFontExistsTF{SimHei}{ %
+\setCJKmonofont{SimHei} %
+\setCJKfamilyfont{HeiTi}{SimHei} %
+}{ %
+\setCJKmonofont[Path=extrafonts/]{SimHei} %
+\setCJKfamilyfont{HeiTi}[Path=extrafonts/]{SimHei} %
+%\setCJKmonofont[Path=extrafonts/]{FZHei-B01S} %
+%\setCJKfamilyfont{HeiTi}[Path=extrafonts/]{FZHei-B01S} %
+}
+
+\IfFontExistsTF{KaiTi}{%
+\setCJKsansfont{KaiTi}
+\setCJKfamilyfont{KaiShu}{KaiTi}%
+}{%
+\setCJKsansfont[Path=extrafonts/]{KaiTi} %
+\setCJKfamilyfont{KaiShu}[Path=extrafonts/]{KaiTi}%
+}
+
+\IfFontExistsTF{SimSun}{%
+\setCJKfamilyfont{SongTi}{SimSun}%
+}{%
+\setCJKfamilyfont{SongTi}[Path=extrafonts/]{SimSun}%
+}
+
+%-----------------------------------------------------------------------------
+\DeclareRobustCommand{\fangsong}{\CJKfamily{FangSong}}
+\DeclareRobustCommand{\heiti}{\CJKfamily{HeiTi}}
+\DeclareRobustCommand{\kaiti}{\CJKfamily{KaiShu}}
+\DeclareRobustCommand{\songti}{\CJKfamily{SongTi}}
+
+%-----------------------------------------------------------------------------
+\XeTeXlinebreaklocale "zh"
+\XeTeXlinebreakskip = 0pt plus 1pt
+
+%-----------------------------------------------------------------------------
+% 页面几何
+%-----------------------------------------------------------------------------
+\geometry{left=3cm,right=3cm,top=2.9cm,bottom=2.7cm}
+
+%-----------------------------------------------------------------------------
+% 封面内容
+%-----------------------------------------------------------------------------
+\makeatletter
+\newcommand*{\rptname}[1]{\gdef\@rptname{#1}}
+\newcommand*{\@rptname}{XXXX XXXX XXXX 研究}
+
+\newcommand*{\rptauthora}[2]{\gdef\@rptauthornamea{#1}\gdef\@rptauthorida{#2}}
+\newcommand*{\@rptauthornamea}{}
+\newcommand*{\@rptauthorida}{}
+
+\newcommand*{\rptauthorb}[2]{\gdef\@rptauthornameb{#1}\gdef\@rptauthoridb{#2}}
+\newcommand*{\@rptauthornameb}{}
+\newcommand*{\@rptauthoridb}{}
+
+\newcommand*{\rptauthorc}[2]{\gdef\@rptauthornamec{#1}\gdef\@rptauthoridc{#2}}
+\newcommand*{\@rptauthornamec}{}
+\newcommand*{\@rptauthoridc}{}
+
+\newcommand*{\reporttime}[2]{\gdef\@reportyear{#1}\gdef\@reportmonth{#2}}
+\newcommand*{\@reportyear}{1999}
+\newcommand*{\@reportmonth}{1}
+
+%-----------------------------------------------------------------------------
+\renewcommand*{\@title}{优化基本理论与方法课程研究报告}
+
+%-----------------------------------------------------------------------------
+\newcommand*{\affiliation}[1]{\gdef\@affiliation{#1}}
+\newcommand*{\@affiliation}{浙江大学计算机科学与技术学院}
+
+%-----------------------------------------------------------------------------
+\newcommand*{\serialnum}[1]{\gdef\@serialnum{#1}}
+\newcommand*{\@serialnum}{1993-1-9315042}
+
+\newcommand*{\@clasifi}{公开}
+
+\newcommand{\noemptystring}[2]{
+\ifthenelse{\equal{#1}{}}{}{#2}
+}
+\newcommand{\anemptystring}[2]{
+\ifthenelse{\equal{#1}{}}{#2}{}
+}
+
+%-----------------------------------------------------------------------------
+\renewcommand*{\maketitle}{%
+    \begin{titlepage}
+        {\raggedright% 右对齐
+            {%
+                \noindent \sanhao \kaiti 编号：~\@serialnum \hfill 级别：~\@clasifi \par
+            }% 
+        }%
+        \vspace{145pt}
+        {\centering% 居中对齐   
+            {\noindent \dayihao \heiti \@title\unskip\strut \par}
+            {\noindent \dayihao \kaiti \@rptname\unskip\strut \par}
+            {\noindent \sanhao \kaiti （\@reportyear 年 \@reportmonth 月） \unskip\strut \par}
+        } %
+        \vspace{134pt}
+        {\centering% 居中对齐
+        \noindent\makebox[\textwidth][c]{
+            \begin{minipage}{0.5\textwidth}
+                \kaiti
+                \noemptystring{\@rptauthornamea}
+                {\noindent\xiaosan{~\hspace{0em}\@rptauthornamea\hfill~（\@rptauthorida ）\hspace{1em} }}\par
+                %
+                \noemptystring{\@rptauthornameb}
+                {\noindent\xiaosan{~\hspace{0em}\@rptauthornameb\hfill~（\@rptauthoridb ）\hspace{1em} }}\par
+                %
+                \noemptystring{\@rptauthornamec}
+                {\noindent\xiaosan{~\hspace{0em}\@rptauthornamec\hfill~（\@rptauthoridc ）\hspace{1em} }}\par
+                %
+            \end{minipage}}
+        }%
+        \vfill
+        {\centering% 居中对齐            
+            {\noindent \sanhao \kaiti \@affiliation \par}
+            \vspace{42pt}
+        }
+    \end{titlepage}
+}%
+
+%-----------------------------------------------------------------------------
+% 章节格式设置
+%-----------------------------------------------------------------------------
+\setcounter{secnumdepth}{5}
+\titleformat{\section}[block]{\heiti \xiaosan}{\thesection}{3mm}{}
+\titleformat{\subsection}[block]{\heiti \sihao}{~\thesubsection}{3mm}{}
+\titleformat{\subsubsection}[block]{\kaiti \sihao}{~\thesubsubsection}{3mm}{}
+\titleformat{\paragraph}[block]{\kaiti \sihao}{~\theparagraph}{3mm}{}
+\titleformat{\subparagraph}[block]{\heiti \sihao \centering}{~\thesubparagraph}{0em}{}
+
+
+%-----------------------------------------------------------------------------
+% 目录格式设置
+%-----------------------------------------------------------------------------
+\setcounter{tocdepth}{2}
+\titlecontents{section}[3em]{\songti \sihao}{\contentslabel{1.5em}}{\hspace*{0em}}{\titlerule*[4pt]{$\cdot$}\contentspage}[\vspace{0pt}]
+%
+\titlecontents{subsection}[5em]{\kaiti  \sihao}{\contentslabel{1.5em}}{\hspace*{0em}}{\titlerule*[4pt]{$\cdot$}\contentspage}[\vspace{0pt}]
+
+\makeatletter
+\newcommand*{\rptcontentsname}[1]{\gdef\@contentsnametomodify{#1}}
+\newcommand*{\@contentsnametomodify}{目\hspace{0.5em}录}
+
+\renewcommand{\contentsname}{{\wuhao \songti \quad\\ \quad\\ \xiaoer \heiti \@contentsnametomodify}}
+\renewcommand\tableofcontents{%
+    \@starttoc{toc}%
+}
+\newcommand{\rptcontent}{%
+\begin{center}
+\contentsname
+\end{center}
+\vspace{60pt}
+\tableofcontents
+\newpage
+}%
+\makeatother
+
+%-----------------------------------------------------------------------------
+% 参考文献设置
+%-----------------------------------------------------------------------------
+\renewcommand{\refname}{参考文献}
+\makeatletter
+\renewcommand{\bibsection}{%
+	\section*{\refname%
+		\@mkboth{\MakeUppercase{\refname}}{\MakeUppercase{\refname}}%
+	}
+}
+\makeatother
+
+\def\bibetal{等}
+\def\biband{和}
+
+%-----------------------------------------------------------------------------
+% 强制奇偶页： 
+% \cleardoublepage to set to an even page.
+% \cleartoleftpage to set to an odd page.
+%-----------------------------------------------------------------------------
+\makeatletter
+\newcommand*{\cleartoleftpage}{%
+  \clearpage
+    \if@twoside
+    \ifodd\c@page
+      \hbox{}\newpage
+      \if@twocolumn
+        \hbox{}\newpage
+      \fi
+    \fi
+  \fi
+}
+\makeatother
+
+%-----------------------------------------------------------------------------
+% emphasis 
+%-----------------------------------------------------------------------------
+\newcommand{\EMPHK}[1]{{\kaiti \color{blue} #1}}
+
+%-----------------------------------------------------------------------------
+% 插图设置
+%-----------------------------------------------------------------------------
+\renewcommand{\figurename}{图}
+\captionsetup[figure]{font={normalfont}}
+
+%-----------------------------------------------------------------------------
+% 表格设置
+%-----------------------------------------------------------------------------
+\renewcommand{\tablename}{表}
+\newcolumntype{$}{>{\global\let\currentrowstyle\relax}}
+\newcolumntype{^}{>{\currentrowstyle}}
+\newcommand{\rowstyle}[1]{\gdef\currentrowstyle{#1}%
+	#1\ignorespaces
+}
+
+%-----------------------------------------------------------------------------
+% 摘要设置
+%-----------------------------------------------------------------------------
+\renewcommand{\abstractname}{{\kaiti \xiaosan 摘要}}
+
+%-----------------------------------------------------------------------------
+% 算法设置
+%-----------------------------------------------------------------------------
+\makeatletter
+\renewcommand*{\ALG@name}{{\heiti \xiaosi 算法}}
+\makeatother
+
+%-----------------------------------------------------------------------------
+% 定理环境设置
+%-----------------------------------------------------------------------------
+\theoremstyle{definition}
+\newtheorem{defn}{{\heiti 定义}}
+\newtheorem{corr}{{\heiti 推论}}
+\newtheorem{thrm}{{\heiti 定理}}
+\newtheorem{lema}{{\heiti 引理}}
+\newtheorem{exmp}{{\heiti 范例}}
+\newtheorem{remark}{{\heiti 注解}}
+\renewcommand*{\proofname}{{\heiti 证明：~}}
+
+\newcommand{\gaplongcap}{\newline\noindent}
+%-----------------------------------------------------------------------------
+\endinput
