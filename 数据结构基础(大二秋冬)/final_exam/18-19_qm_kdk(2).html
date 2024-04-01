@@ -1,0 +1,653 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>浙江大学2018-19秋冬《数据结构基础》期末模拟练习</title>
+  <style>*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+html {
+  font-family: sans-serif;
+  line-height: 1.15;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -ms-overflow-style: scrollbar;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+body {
+  margin: 0;
+  font-family: -apple-system, "PingFang SC", "Lantinghei SC", "Helvetica Neue", "Microsoft Yahei", "Hiragino Sans GB", "Microsoft Sans Serif", "WenQuanYi Micro Hei", sans-serif;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  text-align: left;
+  background-color: #fff;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+p {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+pre,
+code,
+kbd,
+samp {
+  font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 1em;
+}
+pre {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  overflow: auto;
+  -ms-overflow-style: scrollbar;
+}
+.ques-view *:first-child {
+  margin-top: 0;
+}
+.container {
+  max-width: 940px;
+  margin: auto;
+}
+.problemType {
+  display: flex;
+  font-size: 18px;
+  margin: 24px 0 16px;
+}
+.problemType > span:first-child {
+  flex-grow: 1;
+  font-weight: bold;
+}
+.problemType > span:last-child {
+  margin-left: 20px;
+}
+.title {
+  padding: 16px;
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+}
+.header > div {
+  width: calc(100% / 3);
+  display: inline-flex;
+}
+.header > div > span:first-child {
+  font-weight: bold;
+  width: 56px;
+}
+.header > div > span:first-child + span {
+  margin-left: 8px;
+}
+.container {
+  padding: 32px 0 24px;
+  border-bottom: 1px solid hsla(0, 0%, 0%, 0.1);
+}
+.container .problem {
+  display: flex;
+}
+.container .problem > :first-child {
+  margin-right: 12px;
+  white-space: nowrap;
+}
+.container .problem > :nth-child(2) {
+  overflow-x: hidden;
+}
+.container .judgeResponse table {
+  width: 100%;
+}
+.container .judgeResponse th,
+.container .judgeResponse td {
+  border: 1px solid hsla(0, 0%, 0%, 0.1);
+  text-align: center;
+}
+.container .shortField {
+  display: flex;
+}
+.container .shortField > :first-child {
+  width: 80px;
+}
+.container .shortField > :nth-child(2) a {
+  padding: 2px 12px;
+  border: 1px solid hsl(212, 89%, 53%);
+  transition: all 0.3s;
+  text-decoration: none;
+}
+.container .shortField > :nth-child(2) a:hover {
+  background-color: hsl(35, 90%, 50%);
+  color: hsl(0, 0%, 100%);
+  border-color: hsl(0, 0%, 100%);
+}
+.container .longField > :first-child ~ * {
+  padding: 16px;
+  border: 1px dashed hsla(0, 0%, 0%, 0.1);
+}
+.container .shortField,
+.container .longField {
+  margin-top: 8px;
+}
+.container .shortField > :first-child,
+.container .longField > :first-child {
+  position: relative;
+}
+.container .shortField > :first-child::before,
+.container .longField > :first-child::before {
+  content: ' ';
+  position: absolute;
+  display: inline-block;
+  width: 8px;
+  height: 100%;
+  left: -12px;
+  top: 0;
+  background-color: hsla(0, 0%, 0%, 0.2);
+}
+.ques-view {
+  line-height: 1.5;
+  /* font-family: 'Times New Roman'; */
+}
+.ques-view p {
+  margin: 0.5em 0;
+}
+.ques-view h1,
+.ques-view h2,
+.ques-view h3,
+.ques-view h4,
+.ques-view h5,
+.ques-view h6 {
+  margin: 0.8em 0;
+}
+.ques-view img {
+  max-width: 100%;
+}
+.ques-view .ques-list {
+  padding-left: 50px;
+}
+.ques-view .ques-list li {
+  position: relative;
+  list-style-type: upper-alpha;
+}
+.ques-view .ques-list input {
+  position: absolute;
+  left: -40px;
+  top: 50%;
+  margin-top: -7px;
+}
+.ques-view textarea {
+  border-radius: 2px;
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  min-height: 100px;
+}
+.ques-view code {
+  font-size: 12px;
+  background: #f7f7f7;
+  border-radius: 3px;
+  border: 1px solid #e4e4e4;
+  padding: 0 3px;
+  color: #e74c3c;
+  margin: 0 2px;
+  font-family: 'YaHei consolas Hybrid', 'Consolas', monospace;
+}
+.ques-view pre {
+  padding: 6px 12px;
+  background: #f7f7f7;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  word-break: break-all;
+}
+.ques-view pre code {
+  background: none;
+  border: none;
+  color: #333;
+  padding: 0;
+  margin: 0;
+}
+.ques-view hr {
+  border: none;
+  border-top: 1px solid #ccc;
+}
+.ques-view blockquote {
+  margin: 0.5em 0;
+  padding: 2px 14px;
+  font-size: 12px;
+  background: #f4f4f4;
+  border-left: 4px solid #ddd;
+}
+.ques-view table {
+  margin: 0 auto;
+}
+.ques-view table th,
+.ques-view table td {
+  border: 1px solid #ddd;
+  padding: 2px 4px;
+  font-size: 12px;
+}
+.ques-view .ques-score {
+  color: #999;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+/* katex */
+.katex-mathml {
+  display: none;
+}
+</style>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.7.1/dist/katex.min.css" integrity="sha256-tkzDFSl16wERzhCWg0ge2tON2+D6Qe9iEaJqM4ZGd4E=" crossorigin="anonymous">
+</head>
+<body>
+
+<div><div class="container"><div class="title">浙江大学2018-19秋冬《数据结构基础》期末模拟练习</div><div class="header"><div><span>开始时间</span><span>1/1/2016, 12:00:00 AM</span></div><div><span>结束时间</span><span>1/18/2038, 12:00:00 AM</span></div><div><span>答题时长</span><span>120分钟</span></div><div><span>考生</span><span>康大凯</span></div><div><span>得分</span><span>94</span></div><div><span>总分</span><span>100</span></div></div><hr/><div><div class="problemType"><span>判断题</span><span>总分：20</span><span>得分：20</span></div><div class="container"><div class="problem"><div>1-1</div><div><div class="ques-view"><p>Given a binary search tree with 20 integer keys which include 4, 5, and 6, if 4 and 6 are on the same level, then 5 must be their parent. <span class="ques-score">(2分)</span><div class="ques-answer ques-tof"><label><input disabled type="radio" name="ques1">T</label> &nbsp; &nbsp; &nbsp; &nbsp; <label><input disabled type="radio" name="ques1" checked>F</label></div></p>
+</div>
+</div></div><div class="longField judgeResponse"><div>评测结果：答案正确（2 分）</div></div></div><div class="container"><div class="problem"><div>1-2</div><div><div class="ques-view"><p>If <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>N</mi></mrow><annotation encoding="application/x-tex">N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.10903em;">N</span></span></span></span> numbers are stored in a singly linked list in increasing order, then the average time complexity for binary search is <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>l</mi><mi>o</mi><mi>g</mi><mi>N</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(logN)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathit" style="margin-right:0.01968em;">l</span><span class="mord mathit">o</span><span class="mord mathit" style="margin-right:0.03588em;">g</span><span class="mord mathit" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span>.
+<span class="ques-score">(2分)</span><div class="ques-answer ques-tof"><label><input disabled type="radio" name="ques2">T</label> &nbsp; &nbsp; &nbsp; &nbsp; <label><input disabled type="radio" name="ques2" checked>F</label></div></p>
+</div>
+</div></div><div class="longField judgeResponse"><div>评测结果：答案正确（2 分）</div></div></div><div class="container"><div class="problem"><div>1-3</div><div><div class="ques-view"><p>If the preorder and the postorder traversal sequences of a binary tree have exactly the opposite orders, then none of the nodes in the tree has two subtrees. <span class="ques-score">(2分)</span><div class="ques-answer ques-tof"><label><input disabled type="radio" name="ques3" checked>T</label> &nbsp; &nbsp; &nbsp; &nbsp; <label><input disabled type="radio" name="ques3">F</label></div></p>
+</div>
+</div></div><div class="longField judgeResponse"><div>评测结果：答案正确（2 分）</div></div></div><div class="container"><div class="problem"><div>1-4</div><div><div class="ques-view"><p>Quadratic probing is equivalent to double hashing with a secondary hash function of <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>H</mi><mi>a</mi><mi>s</mi><msub><mi>h</mi><mn>2</mn></msub><mo>(</mo><mi>k</mi><mo>)</mo><mo>=</mo><mi>k</mi></mrow><annotation encoding="application/x-tex">Hash_2(k) = k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.08125em;">H</span><span class="mord mathit">a</span><span class="mord mathit">s</span><span class="mord"><span class="mord mathit">h</span><span class="msupsub"><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord mathrm mtight">2</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span><span class="mopen">(</span><span class="mord mathit" style="margin-right:0.03148em;">k</span><span class="mclose">)</span><span class="mrel">=</span><span class="mord mathit" style="margin-right:0.03148em;">k</span></span></span></span>.  <span class="ques-score">(2分)</span><div class="ques-answer ques-tof"><label><input disabled type="radio" name="ques4">T</label> &nbsp; &nbsp; &nbsp; &nbsp; <label><input disabled type="radio" name="ques4" checked>F</label></div></p>
+</div>
+</div></div><div class="longField judgeResponse"><div>评测结果：答案正确（2 分）</div></div></div><div class="container"><div class="problem"><div>1-5</div><div><div class="ques-view"><p>For a graph, if each vertex has an even degree, we can find an Euler circuit that visits every vertex exactly once.  <span class="ques-score">(2分)</span><div class="ques-answer ques-tof"><label><input disabled type="radio" name="ques5">T</label> &nbsp; &nbsp; &nbsp; &nbsp; <label><input disabled type="radio" name="ques5" checked>F</label></div></p>
+</div>
+</div></div><div class="longField judgeResponse"><div>评测结果：答案正确（2 分）</div></div></div><div class="container"><div class="problem"><div>1-6</div><div><div class="ques-view"><p>If keys are pushed onto a stack in the order <code>abcde</code>, then it&#39;s impossible to obtain the output sequence <code>cedab</code>. <span class="ques-score">(2分)</span><div class="ques-answer ques-tof"><label><input disabled type="radio" name="ques6" checked>T</label> &nbsp; &nbsp; &nbsp; &nbsp; <label><input disabled type="radio" name="ques6">F</label></div></p>
+</div>
+</div></div><div class="longField judgeResponse"><div>评测结果：答案正确（2 分）</div></div></div><div class="container"><div class="problem"><div>1-7</div><div><div class="ques-view"><p>Let P be the shortest path from S to T.  If the weight of every edge in the graph is incremented by 1, P will still be the shortest path from S to T. <span class="ques-score">(2分)</span><div class="ques-answer ques-tof"><label><input disabled type="radio" name="ques7">T</label> &nbsp; &nbsp; &nbsp; &nbsp; <label><input disabled type="radio" name="ques7" checked>F</label></div></p>
+</div>
+</div></div><div class="longField judgeResponse"><div>评测结果：答案正确（2 分）</div></div></div><div class="container"><div class="problem"><div>1-8</div><div><div class="ques-view"><p>Mergesort is stable.  <span class="ques-score">(2分)</span><div class="ques-answer ques-tof"><label><input disabled type="radio" name="ques8" checked>T</label> &nbsp; &nbsp; &nbsp; &nbsp; <label><input disabled type="radio" name="ques8">F</label></div></p>
+</div>
+</div></div><div class="longField judgeResponse"><div>评测结果：答案正确（2 分）</div></div></div><div class="container"><div class="problem"><div>1-9</div><div><div class="ques-view"><p>To sort <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>N</mi></mrow><annotation encoding="application/x-tex">N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.10903em;">N</span></span></span></span> records by quick sort, the worst-case time complexity is <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>N</mi><mi>l</mi><mi>o</mi><mi>g</mi><mi>N</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(NlogN)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathit" style="margin-right:0.10903em;">N</span><span class="mord mathit" style="margin-right:0.01968em;">l</span><span class="mord mathit">o</span><span class="mord mathit" style="margin-right:0.03588em;">g</span><span class="mord mathit" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span>.
+<span class="ques-score">(2分)</span><div class="ques-answer ques-tof"><label><input disabled type="radio" name="ques9">T</label> &nbsp; &nbsp; &nbsp; &nbsp; <label><input disabled type="radio" name="ques9" checked>F</label></div></p>
+</div>
+</div></div><div class="longField judgeResponse"><div>评测结果：答案正确（2 分）</div></div></div><div class="container"><div class="problem"><div>1-10</div><div><div class="ques-view"><p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>(</mo><mi>l</mi><mi>o</mi><mi>g</mi><mi>N</mi><msup><mo>)</mo><mn>3</mn></msup></mrow><annotation encoding="application/x-tex">(logN)^3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.8141079999999999em;"></span><span class="strut bottom" style="height:1.064108em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mopen">(</span><span class="mord mathit" style="margin-right:0.01968em;">l</span><span class="mord mathit">o</span><span class="mord mathit" style="margin-right:0.03588em;">g</span><span class="mord mathit" style="margin-right:0.10903em;">N</span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist"><span style="top:-0.363em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped mtight"><span class="mord mathrm mtight">3</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span></span> is <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>N</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathit" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span>.  <span class="ques-score">(2分)</span><div class="ques-answer ques-tof"><label><input disabled type="radio" name="ques10" checked>T</label> &nbsp; &nbsp; &nbsp; &nbsp; <label><input disabled type="radio" name="ques10">F</label></div></p>
+</div>
+</div></div><div class="longField judgeResponse"><div>评测结果：答案正确（2 分）</div></div></div></div><div><div class="problemType"><span>单选题</span><span>总分：60</span><span>得分：54</span></div><div class="container"><div class="problem"><div>2-1</div><div><div class="ques-view"><p>It is known that a 3-heap is a heap whose nodes have 3 children. Suppose that the level-order traversal sequence of a max-3-heap is {88, 76, 65, 82, 68, 46, 52, 44, 62, 33, 75, 28, 55, 60}.  Use the linear algorithm to adjust this max-3-heap into a min-3-heap, and then run DeleteMin.  As a result, there are __ nodes whose positions are not moved in the process. <span class="ques-score">(3分)</span></p>
+<ol class="ques-answer ques-choice ques-list">
+<li><label><input disabled type="radio" name="ques11"> 2</label></li>
+<li><label><input disabled type="radio" name="ques11"> 3</label></li>
+<li><label><input disabled type="radio" name="ques11"> 4</label></li>
+<li><label><input disabled type="radio" name="ques11" checked> 5</label></li>
+</ol>
+</div>
+</div></div><div class="longField judgeResponse"><div>评测结果：答案错误（0 分）</div></div></div><div class="container"><div class="problem"><div>2-2</div><div><div class="ques-view"><p>Given input { 46, 79, 56, 38, 40, 84 }.  Which one of the following is the initial heap built by heap sort? <span class="ques-score">(3分)</span></p>
+<ol class="ques-answer ques-choice ques-list">
+<li><label><input disabled type="radio" name="ques12"> 79, 46, 56, 38, 40, 80</label></li>
+<li><label><input disabled type="radio" name="ques12"> 84, 79, 56, 46, 40, 38</label></li>
+<li><label><input disabled type="radio" name="ques12"> 84, 56, 79, 40, 46, 38</label></li>
+<li><label><input disabled type="radio" name="ques12" checked> 84, 79, 56, 38, 40, 46</label></li>
+</ol>
+</div>
+</div></div><div class="longField judgeResponse"><div>评测结果：答案正确（3 分）</div></div></div><div class="container"><div class="problem"><div>2-3</div><div><div class="ques-view"><p>Suppose that the size of a hash table is 11, and the hash function is H(key)=key%11.  The following 4 elements have been inserted into the table as Addr(14)=3, Addr(38)=5, Addr(61)=6, Addr(86)=9.   When open addressing with quadratic probing is used to solve collisions, the address of the element with key=60 will be    .    <span class="ques-score">(3分)</span></p>
+<ol class="ques-answer ques-choice ques-list">
+<li><label><input disabled type="radio" name="ques13"> 5</label></li>
+<li><label><input disabled type="radio" name="ques13"> 7</label></li>
+<li><label><input disabled type="radio" name="ques13"> 8</label></li>
+<li><label><input disabled type="radio" name="ques13" checked> 10</label></li>
+</ol>
+</div>
+</div></div><div class="longField judgeResponse"><div>评测结果：答案正确（3 分）</div></div></div><div class="container"><div class="problem"><div>2-4</div><div><div class="ques-view"><p>Which one of the following is a possible postorder traversal sequence of a binary search tree?   <span class="ques-score">(3分)</span></p>
+<ol class="ques-answer ques-choice ques-list">
+<li><label><input disabled type="radio" name="ques14"> <code>2 4 1 5 3 7 9 10 8 6</code></label></li>
+<li><label><input disabled type="radio" name="ques14"> <code>2 4 1 5 3 7 10 9 8 6</code></label></li>
+<li><label><input disabled type="radio" name="ques14" checked> <code>2 1 4 5 3 7 10 9 8 6</code></label></li>
+<li><label><input disabled type="radio" name="ques14"> <code>2 1 4 5 3 10 7 9 8 6</code></label></li>
+</ol>
+</div>
+</div></div><div class="longField judgeResponse"><div>评测结果：答案正确（3 分）</div></div></div><div class="container"><div class="problem"><div>2-5</div><div><div class="ques-view"><p>Given the structure of a binary search tree (as shown in the figure), which one of the following insertion sequences is impossible? <span class="ques-score">(3分)</span></p>
+<p><img  src="https://images.ptausercontent.com/84984823-130d-462a-ad9e-ee6457b1ce56.jpg" alt="206.jpg"></p>
+<ol class="ques-answer ques-choice ques-list">
+<li><label><input disabled type="radio" name="ques15"> <code>83 67 91 98 20 75</code></label></li>
+<li><label><input disabled type="radio" name="ques15"> <code>83 67 75 91 20 98</code></label></li>
+<li><label><input disabled type="radio" name="ques15" checked> <code>83 91 75 67 20 98</code></label></li>
+<li><label><input disabled type="radio" name="ques15"> <code>83 91 98 67 75 20</code></label></li>
+</ol>
+</div>
+</div></div><div class="longField judgeResponse"><div>评测结果：答案正确（3 分）</div></div></div><div class="container"><div class="problem"><div>2-6</div><div><div class="ques-view"><p>Given a tree of degree 6. Suppose that the numbers of nodes of degrees 1, 2, 3, 4, 5, 6 are 3, 5, 3, 4, 2, 1, respectively. Then the number of leaf nodes must be: <span class="ques-score">(3分)</span></p>
+<ol class="ques-answer ques-choice ques-list">
+<li><label><input disabled type="radio" name="ques16"> 35</label></li>
+<li><label><input disabled type="radio" name="ques16"> 31</label></li>
+<li><label><input disabled type="radio" name="ques16"> 33</label></li>
+<li><label><input disabled type="radio" name="ques16" checked> 37</label></li>
+</ol>
+</div>
+</div></div><div class="longField judgeResponse"><div>评测结果：答案正确（3 分）</div></div></div><div class="container"><div class="problem"><div>2-7</div><div><div class="ques-view"><p>For the quicksort implementation with both the left and the right pointers stop when an element with the same key as the pivot is found during the partitioning, what is the running time when all keys are equal? <span class="ques-score">(3分)</span></p>
+<ol class="ques-answer ques-choice ques-list">
+<li><label><input disabled type="radio" name="ques17"> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>l</mi><mi>o</mi><mi>g</mi><mi>N</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(logN)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathit" style="margin-right:0.01968em;">l</span><span class="mord mathit">o</span><span class="mord mathit" style="margin-right:0.03588em;">g</span><span class="mord mathit" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span></label></li>
+<li><label><input disabled type="radio" name="ques17"> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>N</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathit" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span></label></li>
+<li><label><input disabled type="radio" name="ques17" checked> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>N</mi><mi>l</mi><mi>o</mi><mi>g</mi><mi>N</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(NlogN)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathit" style="margin-right:0.10903em;">N</span><span class="mord mathit" style="margin-right:0.01968em;">l</span><span class="mord mathit">o</span><span class="mord mathit" style="margin-right:0.03588em;">g</span><span class="mord mathit" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span></label></li>
+<li><label><input disabled type="radio" name="ques17"> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><msup><mi>N</mi><mn>2</mn></msup><mo>)</mo></mrow><annotation encoding="application/x-tex">O(N^2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.8141079999999999em;"></span><span class="strut bottom" style="height:1.064108em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathit" style="margin-right:0.10903em;">N</span><span class="msupsub"><span class="vlist"><span style="top:-0.363em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped mtight"><span class="mord mathrm mtight">2</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span><span class="mclose">)</span></span></span></span></label></li>
+</ol>
+</div>
+</div></div><div class="longField judgeResponse"><div>评测结果：答案正确（3 分）</div></div></div><div class="container"><div class="problem"><div>2-8</div><div><div class="ques-view"><p>Which one of the following is the expression tree corresponding to the postfix expression <code>aef*+bc*+</code>?  <span class="ques-score">(3分)</span></p>
+<ol class="ques-answer ques-choice ques-list">
+<li><label><input disabled type="radio" name="ques18" checked> <img  src="https://images.ptausercontent.com/4c8f89ba-4a49-4b1f-883f-6d1f646c4f69.png" alt="40b2db6b-9115-40cb-9b7e-21537d40a7a1.png"></label></li>
+<li><label><input disabled type="radio" name="ques18"> <img  src="https://images.ptausercontent.com/a08a9ba8-c7cc-496a-8cee-80d492913ef5.png" alt="f69288a2-6a0b-46f1-bcd0-55de5765e922.png"></label></li>
+<li><label><input disabled type="radio" name="ques18"> <img  src="https://images.ptausercontent.com/0fd65428-3673-4083-9607-332091436a04.png" alt="e7df5c2b-4da0-4210-b809-a3cb4f3eee18.png"></label></li>
+<li><label><input disabled type="radio" name="ques18"> <img  src="https://images.ptausercontent.com/c538ccf7-755c-4dab-8393-3e9a712839e2.png" alt="a29b615b-0113-48c3-905c-e3687f422e28.png"></label></li>
+</ol>
+</div>
+</div></div><div class="longField judgeResponse"><div>评测结果：答案正确（3 分）</div></div></div><div class="container"><div class="problem"><div>2-9</div><div><div class="ques-view"><p>For an in-order threaded binary tree, if the pre-order and in-order traversal sequences are <code>D A B C F E</code> and <code>B A C D E F</code> respectively, which pair of nodes&#39; right links are both threads?  <span class="ques-score">(3分)</span></p>
+<ol class="ques-answer ques-choice ques-list">
+<li><label><input disabled type="radio" name="ques19"> D and A</label></li>
+<li><label><input disabled type="radio" name="ques19"> A and F</label></li>
+<li><label><input disabled type="radio" name="ques19"> B and A</label></li>
+<li><label><input disabled type="radio" name="ques19" checked> B and E</label></li>
+</ol>
+</div>
+</div></div><div class="longField judgeResponse"><div>评测结果：答案正确（3 分）</div></div></div><div class="container"><div class="problem"><div>2-10</div><div><div class="ques-view"><p>The inorder and the postorder traversal sequences of a binary tree are <code>a b c d e f g</code> and <code>a c b g f e d</code>, respectively. Then the preorder traversal sequences is: <span class="ques-score">(3分)</span></p>
+<ol class="ques-answer ques-choice ques-list">
+<li><label><input disabled type="radio" name="ques20"> <code>d b a c f e g</code></label></li>
+<li><label><input disabled type="radio" name="ques20" checked> <code>d b a c e f g</code></label></li>
+<li><label><input disabled type="radio" name="ques20"> <code>d a c b f e g</code></label></li>
+<li><label><input disabled type="radio" name="ques20"> <code>d c a b e f g</code></label></li>
+</ol>
+</div>
+</div></div><div class="longField judgeResponse"><div>评测结果：答案正确（3 分）</div></div></div><div class="container"><div class="problem"><div>2-11</div><div><div class="ques-view"><p>The maximum flow from v1 to v6 is <em>__</em>:   <span class="ques-score">(3分)</span></p>
+<p><img  src="https://images.ptausercontent.com/59067da2-bf01-44b3-b189-e4f5aadec03a.jpg" alt="b.jpg"></p>
+<ol class="ques-answer ques-choice ques-list">
+<li><label><input disabled type="radio" name="ques21" checked> 11  </label></li>
+<li><label><input disabled type="radio" name="ques21"> 12  </label></li>
+<li><label><input disabled type="radio" name="ques21"> 13  </label></li>
+<li><label><input disabled type="radio" name="ques21"> 0</label></li>
+</ol>
+</div>
+</div></div><div class="longField judgeResponse"><div>评测结果：答案正确（3 分）</div></div></div><div class="container"><div class="problem"><div>2-12</div><div><div class="ques-view"><p>The following is the part of depth-first search tree to find the articulation points, and the Num(v) value has been marked beside each vertex v. The back edges are not shown. Which of the following situation is impossible?   <span class="ques-score">(3分)</span></p>
+<p><img  src="https://images.ptausercontent.com/5f07aa5e-f4cc-43b4-a77f-7dbab0353212.jpg" alt="288a38a2-e5cc-484f-b0d3-ded92aa32648.jpg"></p>
+<ol class="ques-answer ques-choice ques-list">
+<li><label><input disabled type="radio" name="ques22"> low(v3) is equaled to low(v5)</label></li>
+<li><label><input disabled type="radio" name="ques22" checked> low(v5) is greater than low(v7)</label></li>
+<li><label><input disabled type="radio" name="ques22"> low(v7) is 2</label></li>
+<li><label><input disabled type="radio" name="ques22"> low(v4) is 1</label></li>
+</ol>
+</div>
+</div></div><div class="longField judgeResponse"><div>评测结果：答案正确（3 分）</div></div></div><div class="container"><div class="problem"><div>2-13</div><div><div class="ques-view"><p>A graph with 100 vertices and 12 edges must have at most <em>__</em> connected component(s). <span class="ques-score">(3分)</span></p>
+<ol class="ques-answer ques-choice ques-list">
+<li><label><input disabled type="radio" name="ques23"> 87</label></li>
+<li><label><input disabled type="radio" name="ques23"> 88</label></li>
+<li><label><input disabled type="radio" name="ques23"> 94</label></li>
+<li><label><input disabled type="radio" name="ques23" checked> 95</label></li>
+</ol>
+</div>
+</div></div><div class="longField judgeResponse"><div>评测结果：答案正确（3 分）</div></div></div><div class="container"><div class="problem"><div>2-14</div><div><div class="ques-view"><p>Use Dijkstra algorithm to find the shortest paths from 1 to every other vertices.  In which order that the destinations must be obtained? <span class="ques-score">(3分)</span></p>
+<p><img  src="https://images.ptausercontent.com/1f6fb93a-a4ee-4e48-bc0f-b169fe89f890.JPG" alt="Dij1.JPG"></p>
+<ol class="ques-answer ques-choice ques-list">
+<li><label><input disabled type="radio" name="ques24"> 2, 5, 3, 4, 6, 7</label></li>
+<li><label><input disabled type="radio" name="ques24" checked> 2, 4, 3, 6, 5, 7</label></li>
+<li><label><input disabled type="radio" name="ques24"> 2, 3, 4, 5, 6, 7</label></li>
+<li><label><input disabled type="radio" name="ques24"> 5, 2, 6, 3, 4, 7</label></li>
+</ol>
+</div>
+</div></div><div class="longField judgeResponse"><div>评测结果：答案正确（3 分）</div></div></div><div class="container"><div class="problem"><div>2-15</div><div><div class="ques-view"><p>Insert {18, 23, 4, 26, 31, 33, 17, 39} one by one into an initially empty hash table of size 13 with the hash function <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>H</mi><mo>(</mo><mi>K</mi><mi>e</mi><mi>y</mi><mo>)</mo><mo>=</mo><mi>K</mi><mi>e</mi><mi>y</mi><mi mathvariant="normal">%</mi><mn>1</mn><mn>3</mn></mrow><annotation encoding="application/x-tex">H(Key) = Key\%13</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.08125em;">H</span><span class="mopen">(</span><span class="mord mathit" style="margin-right:0.07153em;">K</span><span class="mord mathit">e</span><span class="mord mathit" style="margin-right:0.03588em;">y</span><span class="mclose">)</span><span class="mrel">=</span><span class="mord mathit" style="margin-right:0.07153em;">K</span><span class="mord mathit">e</span><span class="mord mathit" style="margin-right:0.03588em;">y</span><span class="mord mathrm">%</span><span class="mord mathrm">1</span><span class="mord mathrm">3</span></span></span></span>, and linear probing is used to resolve collisions.  What is the loading density when the first collision occurs? <span class="ques-score">(3分)</span></p>
+<ol class="ques-answer ques-choice ques-list">
+<li><label><input disabled type="radio" name="ques25" checked> 0.54</label></li>
+<li><label><input disabled type="radio" name="ques25"> 0.63</label></li>
+<li><label><input disabled type="radio" name="ques25"> 0.31</label></li>
+<li><label><input disabled type="radio" name="ques25"> 0.62</label></li>
+</ol>
+</div>
+</div></div><div class="longField judgeResponse"><div>评测结果：答案错误（0 分）</div></div></div><div class="container"><div class="problem"><div>2-16</div><div><div class="ques-view"><p>Following is the C-like pseudo code of a function that takes a Queue as an argument.</p>
+<pre><code>void foo(Queue Q)
+{
+    Stack S = CreateStack();  // create an empty stack
+
+    while (!IsEmpty(Q))
+    {
+        // dequeue an item from Q and push it into S
+        Push(S, Dequeue(Q));
+    }
+
+    while (!IsEmpty(S))
+    {
+        // pop an item from S and enqueue it into Q
+        Enqueue(Q, Pop(S));
+    }
+		
+    DisposeStack(S);
+}
+</code></pre><p>What does the above function do?   <span class="ques-score">(3分)</span></p>
+<ol class="ques-answer ques-choice ques-list">
+<li><label><input disabled type="radio" name="ques26"> Removes the last item from Q</label></li>
+<li><label><input disabled type="radio" name="ques26"> Keeps Q unchanged</label></li>
+<li><label><input disabled type="radio" name="ques26"> Makes Q empty</label></li>
+<li><label><input disabled type="radio" name="ques26" checked> Reverses Q</label></li>
+</ol>
+</div>
+</div></div><div class="longField judgeResponse"><div>评测结果：答案正确（3 分）</div></div></div><div class="container"><div class="problem"><div>2-17</div><div><div class="ques-view"><p>In order to convert the infix expression <code>4 * 3 + (6 * 3 - 12)</code> to postfix expression using a stack <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>S</mi></mrow><annotation encoding="application/x-tex">S</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.05764em;">S</span></span></span></span>, then the minimum size of <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>S</mi></mrow><annotation encoding="application/x-tex">S</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.05764em;">S</span></span></span></span> must be:   <span class="ques-score">(3分)</span></p>
+<ol class="ques-answer ques-choice ques-list">
+<li><label><input disabled type="radio" name="ques27"> 2</label></li>
+<li><label><input disabled type="radio" name="ques27" checked> 3</label></li>
+<li><label><input disabled type="radio" name="ques27"> 4</label></li>
+<li><label><input disabled type="radio" name="ques27"> 5</label></li>
+</ol>
+</div>
+</div></div><div class="longField judgeResponse"><div>评测结果：答案正确（3 分）</div></div></div><div class="container"><div class="problem"><div>2-18</div><div><div class="ques-view"><p>To find the minimum spanning tree with Prim&#39;s algorithm for the following graph, a sequence of vertexes 6, 1, 2, 3 was found during the algorithm&#39;s early steps. Which one  vertex will be added in the next step?   <span class="ques-score">(3分)</span></p>
+<p><img  src="https://images.ptausercontent.com/506e05bd-d5ad-47aa-ad52-87f21b64f0af.jpg" alt="c.jpg"></p>
+<ol class="ques-answer ques-choice ques-list">
+<li><label><input disabled type="radio" name="ques28" checked> 0  </label></li>
+<li><label><input disabled type="radio" name="ques28"> 4  </label></li>
+<li><label><input disabled type="radio" name="ques28"> 5  </label></li>
+<li><label><input disabled type="radio" name="ques28"> the vertex serial is incorrect</label></li>
+</ol>
+</div>
+</div></div><div class="longField judgeResponse"><div>评测结果：答案正确（3 分）</div></div></div><div class="container"><div class="problem"><div>2-19</div><div><div class="ques-view"><p>Let <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>T</mi></mrow><annotation encoding="application/x-tex">T</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.13889em;">T</span></span></span></span> be a tree of <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>N</mi></mrow><annotation encoding="application/x-tex">N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.10903em;">N</span></span></span></span> nodes created by union-by-size without path compression, then the minimum depth of <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>T</mi></mrow><annotation encoding="application/x-tex">T</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.13889em;">T</span></span></span></span> may be  <span class="ques-score">(3分)</span></p>
+<ol class="ques-answer ques-choice ques-list">
+<li><label><input disabled type="radio" name="ques29" checked> 1</label></li>
+<li><label><input disabled type="radio" name="ques29"> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>l</mi><mi>o</mi><mi>g</mi><mi>N</mi></mrow><annotation encoding="application/x-tex">logN</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.69444em;"></span><span class="strut bottom" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.01968em;">l</span><span class="mord mathit">o</span><span class="mord mathit" style="margin-right:0.03588em;">g</span><span class="mord mathit" style="margin-right:0.10903em;">N</span></span></span></span></label></li>
+<li><label><input disabled type="radio" name="ques29"> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>N</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">N-1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.76666em;vertical-align:-0.08333em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.10903em;">N</span><span class="mbin">−</span><span class="mord mathrm">1</span></span></span></span></label></li>
+<li><label><input disabled type="radio" name="ques29"> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>N</mi><mi mathvariant="normal">/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">N/2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.10903em;">N</span><span class="mord mathrm">/</span><span class="mord mathrm">2</span></span></span></span></label></li>
+</ol>
+</div>
+</div></div><div class="longField judgeResponse"><div>评测结果：答案正确（3 分）</div></div></div><div class="container"><div class="problem"><div>2-20</div><div><div class="ques-view"><p>When inserting a new key <code>K</code> into a binary search tree <code>T</code> with 511 nodes, the worst-case number of comparisons between <code>K</code> and the keys already in <code>T</code> is in the range of:  <span class="ques-score">(3分)</span></p>
+<ol class="ques-answer ques-choice ques-list">
+<li><label><input disabled type="radio" name="ques30"> [10, 511]</label></li>
+<li><label><input disabled type="radio" name="ques30" checked> [9, 511]</label></li>
+<li><label><input disabled type="radio" name="ques30"> [9, 512]</label></li>
+<li><label><input disabled type="radio" name="ques30"> [10, 512]</label></li>
+</ol>
+</div>
+</div></div><div class="longField judgeResponse"><div>评测结果：答案正确（3 分）</div></div></div></div><div><div class="problemType"><span>程序填空题</span><span>总分：12</span><span>得分：12</span></div><div class="container"><div class="problem"><div>5-1</div><div><div class="ques-view"><p>The function is to find the <code>K</code>-th smallest element in a list <code>A</code> of <code>N</code> elements.  The function <code>BuildMaxHeap(H, K)</code> is to arrange elements <code>H[1]</code> ... <code>H[K]</code> into a max-heap.  Please complete the following program. </p>
+<pre><code class="lang-c++">ElementType FindKthSmallest ( int A[], int N, int K )
+{   /* it is assumed that K&lt;=N */
+    ElementType *H;
+    int i, next, child;
+
+    H = (ElementType *)malloc((K+1)*sizeof(ElementType));
+    for ( i=1; i&lt;=K; i++ ) H[i] = A[i-1];
+    BuildMaxHeap(H, K);
+
+    for ( next=K; next&lt;N; next++ ) {
+        H[0] = A[next];
+        if ( H[0] &lt; H[1] ) {
+            for ( i=1; i*2&lt;=K; i=child ) {
+                child = i*2;
+                if ( child!=K &amp;&amp; <input disabled class="ques-answer" type="text" value="H[child]&lt;H[child+1]" size="28"><span class="ques-score">(3分)</span> ) child++;
+                if ( <input disabled class="ques-answer" type="text" value="H[child]&gt;H[0]" size="28"><span class="ques-score">(3分)</span> )
+                    H[i] = H[child];
+                else break;
+            }
+            H[i] = H[0];
+        }
+    }
+    return H[1];
+}
+
+</code></pre>
+</div>
+</div></div><div class="longField judgeResponse"><div>评测结果：答案正确（6 分）</div><table><thead><tr><th>序号</th><th>结果</th><th>得分</th></tr></thead><tbody><tr><td>0</td><td>答案正确</td><td>3</td></tr><tr><td>1</td><td>答案正确</td><td>3</td></tr></tbody></table></div></div><div class="container"><div class="problem"><div>5-2</div><div><div class="ques-view"><p>Given an array <code>a[]</code>of <code>n</code> integers, the function <code>MissingMin</code> is to find and return the minimum positive integer which is <strong>NOT</strong> in the array.  For example, given { 3, -1, 8, 1, 0 }, 2 is the smallest positive integer which is missing.</p>
+<pre><code class="lang-c++">int MissingMin( int a[], int n )
+{
+    int i, j, min, missing=1;
+		
+    for( i=0; i&lt;n; i++ ){
+        min = i;
+        for( j = i+1; j &lt; n; j++ )
+            if (<input disabled class="ques-answer" type="text" value="a[j]&lt;a[min]"><span class="ques-score">(3分)</span>)  min = j;	
+        if ( min != i )  swap(a[i], a[min]);
+        if ( a[i] == missing )  missing++;
+        else if ( a[i] &gt; missing )  <input disabled class="ques-answer" type="text" value="break"><span class="ques-score">(3分)</span>;
+    }
+    return missing;
+} 
+
+</code></pre>
+</div>
+</div></div><div class="longField judgeResponse"><div>评测结果：答案正确（6 分）</div><table><thead><tr><th>序号</th><th>结果</th><th>得分</th></tr></thead><tbody><tr><td>0</td><td>答案正确</td><td>3</td></tr><tr><td>1</td><td>答案正确</td><td>3</td></tr></tbody></table></div></div></div><div><div class="problemType"><span>函数题</span><span>总分：8</span><span>得分：8</span></div><div class="container"><div class="problem"><div>6-1</div><div><div>Is Topological Order</div><div><div class="ques-view"><p>Write a program to test if a give sequence <code>Seq</code> is a topological order of a given graph <code>Graph</code>.</p>
+<h3 id="format-of-functions-">Format of functions:</h3>
+<pre><code class="lang-c++">bool IsTopSeq( LGraph Graph, Vertex Seq[] );
+</code></pre>
+<p>where <code>LGraph</code> is defined as the following:</p>
+<pre><code class="lang-c++">typedef struct AdjVNode *PtrToAdjVNode; 
+struct AdjVNode{
+    Vertex AdjV;
+    PtrToAdjVNode Next;
+};
+
+typedef struct Vnode{
+    PtrToAdjVNode FirstEdge;
+} AdjList[MaxVertexNum];
+
+typedef struct GNode *PtrToGNode;
+struct GNode{  
+    int Nv;
+    int Ne;
+    AdjList G;
+};
+typedef PtrToGNode LGraph;
+</code></pre>
+<p>The function <code>IsTopSeq</code> must return <code>true</code> if <code>Seq</code> does correspond to a topological order; otherwise return <code>false</code>.</p>
+<p><strong>Note:</strong> Although the vertices are numbered from 1 to MaxVertexNum, they are <strong>indexed from 0</strong> in the LGraph structure.</p>
+<h3 id="sample-program-of-judge-">Sample program of judge:</h3>
+<pre><code class="lang-c++">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+typedef enum {false, true} bool;
+#define MaxVertexNum 10  /* maximum number of vertices */
+typedef int Vertex;      /* vertices are numbered from 1 to MaxVertexNum */
+
+typedef struct AdjVNode *PtrToAdjVNode; 
+struct AdjVNode{
+    Vertex AdjV;
+    PtrToAdjVNode Next;
+};
+
+typedef struct Vnode{
+    PtrToAdjVNode FirstEdge;
+} AdjList[MaxVertexNum];
+
+typedef struct GNode *PtrToGNode;
+struct GNode{  
+    int Nv;
+    int Ne;
+    AdjList G;
+};
+typedef PtrToGNode LGraph;
+
+LGraph ReadG(); /* details omitted */
+
+bool IsTopSeq( LGraph Graph, Vertex Seq[] );
+
+int main()
+{
+    int i, j, N;
+    Vertex Seq[MaxVertexNum];
+    LGraph G = ReadG();
+    scanf(&quot;%d&quot;, &amp;N);
+    for (i=0; i&lt;N; i++) {
+        for (j=0; j&lt;G-&gt;Nv; j++)
+            scanf(&quot;%d&quot;, &amp;Seq[j]);
+        if ( IsTopSeq(G, Seq)==true ) printf(&quot;yes\n&quot;);
+        else printf(&quot;no\n&quot;);
+    }
+
+    return 0;
+}
+
+/* Your function will be put here */
+
+</code></pre>
+<h3 id="sample-input-for-the-graph-shown-in-the-figure-">Sample Input (for the graph shown in the figure):</h3>
+<p><img  src="https://images.ptausercontent.com/5373e878-196d-45dd-a82f-555b1fea6929.JPG" alt="topord.JPG"></p>
+<pre><code class="lang-in">6 8
+1 2
+1 3
+5 2
+5 4
+2 3
+2 6
+3 4
+6 4
+5
+1 5 2 3 6 4
+5 1 2 6 3 4
+5 1 2 3 6 4
+5 2 1 6 3 4
+1 2 3 4 5 6
+</code></pre>
+<h3 id="sample-output-">Sample Output:</h3>
+<pre><code class="lang-out">yes
+yes
+yes
+no
+no
+</code></pre>
+</div>
+</div></div></div><div class="longField"><div>代码</div><pre>bool IsTopSeq( LGraph Graph, Vertex Seq[] ){
+	int Indegree[Graph-&gt;Nv];
+	int i;
+	for(i=0;i&lt;Graph-&gt;Nv;i++){
+		Indegree[i]=0;
+		Seq[i]--;
+	}
+		
+	PtrToAdjVNode T;
+	for(i=0;i&lt;Graph-&gt;Nv;i++){
+		T=Graph-&gt;G[i].FirstEdge;
+		while(T!=NULL){
+			Indegree[T-&gt;AdjV]++;
+			T=T-&gt;Next;
+		}
+	}
+	for(i=0;i&lt;Graph-&gt;Nv;i++){
+		Vertex V=Seq[i];
+		if(Indegree[V]!=0)return false;
+		T=Graph-&gt;G[V].FirstEdge;
+		while(T!=NULL){
+			Indegree[T-&gt;AdjV]--;
+			T=T-&gt;Next;
+		}
+	}
+	return true;
+} 
+
+</pre></div><div class="longField judgeResponse"><div>评测结果：答案正确（8 分）</div><table><thead><tr><th>测试点</th><th>结果</th><th>得分</th><th>耗时</th><th>内存</th></tr></thead><tbody><tr><td>0</td><td>答案正确</td><td>4</td><td>2 ms</td><td>256 KB</td></tr><tr><td>1</td><td>答案正确</td><td>1</td><td>2 ms</td><td>376 KB</td></tr><tr><td>2</td><td>答案正确</td><td>1</td><td>2 ms</td><td>256 KB</td></tr><tr><td>3</td><td>答案正确</td><td>1</td><td>2 ms</td><td>384 KB</td></tr><tr><td>4</td><td>答案正确</td><td>1</td><td>29 ms</td><td>512 KB</td></tr></tbody></table><pre>a.c: In function ‘ReadG’:
+a.c:68:2: warning: ignoring return value of ‘scanf’, declared with attribute warn_unused_result [-Wunused-result]
+  scanf(&quot;%d&quot;, &amp;Nv);   /* 读入顶点个数 */
+  ^~~~~~~~~~~~~~~~
+a.c:71:2: warning: ignoring return value of ‘scanf’, declared with attribute warn_unused_result [-Wunused-result]
+  scanf(&quot;%d&quot;, &amp;(Graph-&gt;Ne));   /* 读入边数 */
+  ^~~~~~~~~~~~~~~~~~~~~~~~~
+a.c:76:7: warning: ignoring return value of ‘scanf’, declared with attribute warn_unused_result [-Wunused-result]
+       scanf(&quot;%d %d&quot;, &amp;E-&gt;V1, &amp;E-&gt;V2);
+       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+a.c: In function ‘main’:
+a.c:90:5: warning: ignoring return value of ‘scanf’, declared with attribute warn_unused_result [-Wunused-result]
+     scanf(&quot;%d&quot;, &amp;N);
+     ^~~~~~~~~~~~~~~
+a.c:93:13: warning: ignoring return value of ‘scanf’, declared with attribute warn_unused_result [-Wunused-result]
+             scanf(&quot;%d&quot;, &amp;Seq[j]);
+             ^~~~~~~~~~~~~~~~~~~~</pre></div></div></div></div></div>
+
+</body>
+</html>
