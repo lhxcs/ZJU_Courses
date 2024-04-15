@@ -1,4 +1,4 @@
-# [TOEFL Speaking] 2023-2024 Spring & Summer
+# [TOEFL Speaking] 2023-2024 Spring
 
 - toefl_speaking_rubrics: 老师发的官方评分标准。
 - Connecting expressions: 一些常用的连接词，可以在综合口语中灵活使用。
