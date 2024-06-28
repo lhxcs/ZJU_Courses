@@ -1,0 +1,18 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  --include "../../../../lab4.srcs/sources_1/imports/lab4_src" \
+"../../../../lab4.srcs/sources_1/imports/new/Alu.v" \
+"../../../../lab4.srcs/sources_1/imports/new/Comparator.v" \
+"../../../../lab4.srcs/sources_1/new/Core.v" \
+"../../../../lab4.srcs/sources_1/imports/lab4_src/DMem.v" \
+"../../../../lab4.srcs/sources_1/imports/lab4_src/IMem.v" \
+"../../../../lab4.srcs/sources_1/new/ImmGen.v" \
+"../../../../lab4.srcs/sources_1/imports/lab4_src/Mem.v" \
+"../../../../lab4.srcs/sources_1/imports/new/RegFile.v" \
+"../../../../lab4.srcs/sources_1/new/SCPU_Ctrl.v" \
+"../../../../lab4.srcs/sim_1/new/Core_tb.v" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort
