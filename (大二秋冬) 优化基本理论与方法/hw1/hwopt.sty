@@ -1,0 +1,39 @@
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+% Copyright note: This package 0.1 defines how kjwprop should
+% be typeset.
+% Please check for updates.
+% Author: qianhui@zju.edu.cn
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\ProvidesPackage{hwopt}[2019/10/10 v.01 A package for opt homework.]
+
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+% Package required.
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%\RequirePackage{xltxtra,fontspec,xunicode}
+\RequirePackage[english]{babel}
+\RequirePackage[utf8]{inputenc}
+\RequirePackage{amsthm}
+\RequirePackage{amsmath,amssymb}
+\RequirePackage{parskip}
+\RequirePackage{graphicx}
+\RequirePackage{amsfonts}
+
+% Margins
+\RequirePackage[top=2.5cm, left=3cm, right=3cm, bottom=4.0cm]{geometry}
+% Colour table cells
+\RequirePackage[table]{xcolor}
+
+% Get larger line spacing in table
+\newcommand{\tablespace}{\\[1.25mm]}
+\newcommand\Tstrut{\rule{0pt}{2.6ex}}         % = `top' strut
+\newcommand\tstrut{\rule{0pt}{2.0ex}}         % = `top' strut
+\newcommand\Bstrut{\rule[-0.9ex]{0pt}{0pt}}   % = `bottom' strut
+\newcommand{\innerproduct}[2]{\langle #1,~#2\rangle}
+
+\newenvironment{SOLUTION}[1]{\paragraph{Solution of Excercise \ref{#1}:}}{\hfill$\square$}
+\newenvironment{PROOF}[1]{\paragraph{Proof of Excercise \ref{#1}:}}{\hfill$\square$}
+\theoremstyle{definition}
+\newtheorem{excercise}{Excercise}
+
+%-----------------------------------------------------------------------------
+\endinput
