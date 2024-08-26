@@ -1,0 +1,21 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  --include "../../../../lab4_exception.srcs/sources_1/imports/co/lab4_src" \
+"../../../../lab4_exception.srcs/sources_1/imports/co/lab4/lab4.srcs/sources_1/imports/new/Alu.v" \
+"../../../../lab4_exception.srcs/sources_1/new/CSR_ALU.v" \
+"../../../../lab4_exception.srcs/sources_1/new/CSR_File.v" \
+"../../../../lab4_exception.srcs/sources_1/imports/co/lab4/lab4.srcs/sources_1/imports/new/Comparator.v" \
+"../../../../lab4_exception.srcs/sources_1/imports/co/lab4/lab4.srcs/sources_1/new/Core.v" \
+"../../../../lab4_exception.srcs/sources_1/imports/co/lab4_src/DMem.v" \
+"../../../../lab4_exception.srcs/sources_1/new/Exception_Controller.v" \
+"../../../../lab4_exception.srcs/sources_1/imports/co/lab4_src/IMem.v" \
+"../../../../lab4_exception.srcs/sources_1/imports/co/lab4/lab4.srcs/sources_1/new/ImmGen.v" \
+"../../../../lab4_exception.srcs/sources_1/imports/co/lab4_src/Mem.v" \
+"../../../../lab4_exception.srcs/sources_1/imports/co/lab4/lab4.srcs/sources_1/imports/new/RegFile.v" \
+"../../../../lab4_exception.srcs/sources_1/imports/co/lab4/lab4.srcs/sources_1/new/SCPU_Ctrl.v" \
+"../../../../lab4_exception.srcs/sim_1/new/Core_sim.v" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort

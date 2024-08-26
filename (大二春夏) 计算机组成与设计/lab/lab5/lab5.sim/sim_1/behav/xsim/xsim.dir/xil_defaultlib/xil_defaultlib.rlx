@@ -1,0 +1,18 @@
+0.7
+2020.2
+Oct 14 2022
+05:20:55
+C:/Users/petrichor0/Desktop/co/lab5/lab5.sim/sim_1/behav/xsim/glbl.v,1665704903,verilog,,,,glbl,,,,,,,,
+C:/Users/petrichor0/Desktop/co/lab5/lab5.srcs/sim_1/new/Core_sim.v,1716894671,verilog,,,,Core_sim,,,../../../../lab5.srcs/sources_1/imports/co/lab5_src,,,,,
+C:/Users/petrichor0/Desktop/co/lab5/lab5.srcs/sources_1/imports/co/lab3/lab3.srcs/sources_1/new/Alu.v,1711700097,verilog,,C:/Users/petrichor0/Desktop/co/lab5/lab5.srcs/sources_1/imports/co/lab3/lab3.srcs/sources_1/new/Comparator.v,,Alu,,,../../../../lab5.srcs/sources_1/imports/co/lab5_src,,,,,
+C:/Users/petrichor0/Desktop/co/lab5/lab5.srcs/sources_1/imports/co/lab3/lab3.srcs/sources_1/new/Comparator.v,1711697039,verilog,,C:/Users/petrichor0/Desktop/co/lab5/lab5.srcs/sources_1/imports/co/lab4/lab4.srcs/sources_1/new/Core.v,,Comparator,,,../../../../lab5.srcs/sources_1/imports/co/lab5_src,,,,,
+C:/Users/petrichor0/Desktop/co/lab5/lab5.srcs/sources_1/imports/co/lab3/lab3.srcs/sources_1/new/RegFile.v,1716899063,verilog,,C:/Users/petrichor0/Desktop/co/lab5/lab5.srcs/sources_1/imports/co/lab4/lab4.srcs/sources_1/new/SCPU_Ctrl.v,,RegFile,,,../../../../lab5.srcs/sources_1/imports/co/lab5_src,,,,,
+C:/Users/petrichor0/Desktop/co/lab5/lab5.srcs/sources_1/imports/co/lab4/lab4.srcs/sources_1/new/Core.v,1717227767,verilog,,C:/Users/petrichor0/Desktop/co/lab5/lab5.srcs/sources_1/imports/co/lab5_src/DMem.v,C:/Users/petrichor0/Desktop/co/lab5/lab5.srcs/sources_1/imports/co/lab5_src/Defines.vh,Core,,,../../../../lab5.srcs/sources_1/imports/co/lab5_src,,,,,
+C:/Users/petrichor0/Desktop/co/lab5/lab5.srcs/sources_1/imports/co/lab4/lab4.srcs/sources_1/new/ImmGen.v,1717147191,verilog,,C:/Users/petrichor0/Desktop/co/lab5/lab5.srcs/sources_1/imports/co/lab5_src/Mem.v,,ImmGen,,,../../../../lab5.srcs/sources_1/imports/co/lab5_src,,,,,
+C:/Users/petrichor0/Desktop/co/lab5/lab5.srcs/sources_1/imports/co/lab4/lab4.srcs/sources_1/new/SCPU_Ctrl.v,1717148477,verilog,,C:/Users/petrichor0/Desktop/co/lab5/lab5.srcs/sim_1/new/Core_sim.v,C:/Users/petrichor0/Desktop/co/lab5/lab5.srcs/sources_1/imports/co/lab5_src/Defines.vh,SCPU_Ctrl,,,../../../../lab5.srcs/sources_1/imports/co/lab5_src,,,,,
+C:/Users/petrichor0/Desktop/co/lab5/lab5.srcs/sources_1/imports/co/lab5_src/DMem.v,1716882579,verilog,,C:/Users/petrichor0/Desktop/co/lab5/lab5.srcs/sources_1/new/Forwarding_Ctrl.v,,DMem,,,../../../../lab5.srcs/sources_1/imports/co/lab5_src,,,,,
+C:/Users/petrichor0/Desktop/co/lab5/lab5.srcs/sources_1/imports/co/lab5_src/Defines.vh,1716882579,verilog,,,,,,,,,,,,
+C:/Users/petrichor0/Desktop/co/lab5/lab5.srcs/sources_1/imports/co/lab5_src/IMem.v,1716882579,verilog,,C:/Users/petrichor0/Desktop/co/lab5/lab5.srcs/sources_1/imports/co/lab4/lab4.srcs/sources_1/new/ImmGen.v,,IMem,,,../../../../lab5.srcs/sources_1/imports/co/lab5_src,,,,,
+C:/Users/petrichor0/Desktop/co/lab5/lab5.srcs/sources_1/imports/co/lab5_src/Mem.v,1716882579,verilog,,C:/Users/petrichor0/Desktop/co/lab5/lab5.srcs/sources_1/imports/co/lab3/lab3.srcs/sources_1/new/RegFile.v,,Mem,,,../../../../lab5.srcs/sources_1/imports/co/lab5_src,,,,,
+C:/Users/petrichor0/Desktop/co/lab5/lab5.srcs/sources_1/new/Forwarding_Ctrl.v,1717222901,verilog,,C:/Users/petrichor0/Desktop/co/lab5/lab5.srcs/sources_1/new/Hazard_Detection.v,,Forwarding_Ctrl,,,../../../../lab5.srcs/sources_1/imports/co/lab5_src,,,,,
+C:/Users/petrichor0/Desktop/co/lab5/lab5.srcs/sources_1/new/Hazard_Detection.v,1717225299,verilog,,C:/Users/petrichor0/Desktop/co/lab5/lab5.srcs/sources_1/imports/co/lab5_src/IMem.v,,Hazard_Detection,,,../../../../lab5.srcs/sources_1/imports/co/lab5_src,,,,,

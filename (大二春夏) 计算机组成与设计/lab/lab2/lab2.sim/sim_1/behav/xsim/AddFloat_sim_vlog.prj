@@ -1,0 +1,10 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  --include "../../../../lab2.srcs/sources_1/imports/lab2_src" \
+"../../../../lab2.srcs/sources_1/new/AddFloat.v" \
+"../../../../lab2.srcs/sim_1/new/AddFloat_sim.v" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort

@@ -1,0 +1,20 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  --include "../../../../lab5.srcs/sources_1/imports/co/lab5_src" \
+"../../../../lab5.srcs/sources_1/imports/co/lab3/lab3.srcs/sources_1/new/Alu.v" \
+"../../../../lab5.srcs/sources_1/imports/co/lab3/lab3.srcs/sources_1/new/Comparator.v" \
+"../../../../lab5.srcs/sources_1/imports/co/lab4/lab4.srcs/sources_1/new/Core.v" \
+"../../../../lab5.srcs/sources_1/imports/co/lab5_src/DMem.v" \
+"../../../../lab5.srcs/sources_1/new/Forwarding_Ctrl.v" \
+"../../../../lab5.srcs/sources_1/new/Hazard_Detection.v" \
+"../../../../lab5.srcs/sources_1/imports/co/lab5_src/IMem.v" \
+"../../../../lab5.srcs/sources_1/imports/co/lab4/lab4.srcs/sources_1/new/ImmGen.v" \
+"../../../../lab5.srcs/sources_1/imports/co/lab5_src/Mem.v" \
+"../../../../lab5.srcs/sources_1/imports/co/lab3/lab3.srcs/sources_1/new/RegFile.v" \
+"../../../../lab5.srcs/sources_1/imports/co/lab4/lab4.srcs/sources_1/new/SCPU_Ctrl.v" \
+"../../../../lab5.srcs/sim_1/new/Core_sim.v" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort
